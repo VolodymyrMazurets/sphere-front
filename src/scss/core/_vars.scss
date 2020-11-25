@@ -1,0 +1,47 @@
+/* ---COLORS--- */
+
+// Neutrals
+$N0: #fff;
+$N1: #131f38;
+$N2: #6e7b95;
+$N00: #000;
+
+$V1: #b499ff;
+$V2: #A3A3DC;
+
+$R1: #F16C78;
+
+/* ---FONT SIZE--- */
+@function calcRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+$H24: calcRem(24px);
+$H20: calcRem(20px);
+$H18: calcRem(18px);
+$H16: calcRem(16px);
+$H14: calcRem(14px);
+$H13: calcRem(13px);
+$H12: calcRem(12px);
+$H11: calcRem(11px);
+$H10: calcRem(10px);
+
+/* Screens */
+$screen-iphone-5: 320px;
+$screen-iphone-6: 375px;
+$screen-iphone-plus: 414px;
+$screen-tablet-small: 600px;
+$screen-tablet: 768px;
+$screen-tablet-large: 860px;
+$screen-netbook: 960px;
+$screen-desktop: 1024px;
+$screen-desktop-large: 1280px;
+$screen-hd: 1366px;
+$screen-fullhd: 1440px;
+$screen-retina: 1660px;
+
+// FONTS
+$base-font: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Text",
+  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;

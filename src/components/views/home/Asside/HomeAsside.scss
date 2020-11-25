@@ -1,0 +1,30 @@
+@import "../../../../scss/core.scss";
+.HomeAsside {
+  height: 100%;
+  padding: 30px;
+  overflow: auto;
+  @extend %block-styles;
+  &__title {
+    @include text($H20, 600, $N1);
+    margin-bottom: 24px;
+  }
+  &__list {
+      margin-bottom: 0;
+  }
+  &__item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  &__name {
+    @include text($H13, 500, $N1);
+    margin-bottom: 0;
+  }
+  &__date {
+    @include text($H13, 400, $N2);
+    margin: 0;
+  }
+  &__text {
+    @include text($H13, 400, $N2);
+    line-height: 186.9%;
+    margin: 0;
+  }
+}

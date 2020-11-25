@@ -1,0 +1,12 @@
+@import "../../scss/core.scss";
+.TheHeader {
+  position: relative;
+  z-index: 10;
+  padding: 22px 30px 20px;
+  &__logo {
+      @include size(40px);
+  }
+  &__user-name {
+      @include text($H16, 500, $N1);
+  }
+}

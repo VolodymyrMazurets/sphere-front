@@ -1,0 +1,50 @@
+@import "../../scss/core.scss";
+.TheMenu {
+  padding: 24px 32px;
+  &__header {
+    margin-bottom: 36px;
+  }
+  & &__btn {
+    background-color: rgba($V2, 0.1);
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+    border: none;
+    box-shadow: none;
+    &._white {
+      background: $N0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__item {
+    @include text($H14, 500, $N1);
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+        color: inherit;
+        @include flex(flex-start, center);
+    }
+  }
+  &__icon {
+      margin-right: 16px;
+      font-size: 24px;
+  }
+  &__btn-search {
+    width: 202px;
+    background: rgba($V2, 0.1);
+    border: none;
+    box-shadow: none;
+    @include text($H13, 500, rgba($N2, 0.4));
+    text-shadow: none;
+    margin-bottom: 30px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: rgba($V2, 0.1);
+    }
+  }
+}

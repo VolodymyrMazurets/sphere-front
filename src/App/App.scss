@@ -1,0 +1,76 @@
+@import "../scss/core.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  min-height: 100vh;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+.App {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  position: relative;
+  z-index: 0;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+  &:before {
+    width: 486.16px;
+    height: 486.16px;
+    left: 204.66px;
+    top: -40px;
+    background: linear-gradient(
+      62.14deg,
+      rgba(255, 255, 254, 0.12) 2.01%,
+      #ffdcbb 17.64%,
+      #ffc4c7 34.38%,
+      #d1c1ff 50.4%
+    );
+    opacity: 0.6;
+    filter: blur(250px);
+    transform: rotate(75deg);
+  }
+  &:after {
+    width: 956.63px;
+    height: 120%;
+    right: -300px;
+    top: -102.41px;
+    background: linear-gradient(
+      354.12deg,
+      rgba(255, 255, 254, 0.12) 21.08%,
+      #ffdcbb 49.26%,
+      #ffc4c7 85.59%
+    );
+    filter: blur(250px);
+    transform: rotate(-21.87deg);
+  }
+  &__inner {
+    height: 100%;
+    background: rgba($N0, 0.3);
+    border-radius: 20px;
+    z-index: 1;
+    border: 2px solid rgba($N0, 0.5);
+    @include flex(stretch, stretch);
+  }
+  &__menu {
+    width: 100%;
+    max-width: 300px;
+  }
+}
