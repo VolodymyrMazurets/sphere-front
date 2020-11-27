@@ -4,12 +4,18 @@
 $N0: #fff;
 $N1: #131f38;
 $N2: #6e7b95;
+$N3: #e3e4e7;
 $N00: #000;
 
 $V1: #b499ff;
-$V2: #A3A3DC;
+$V2: #a3a3dc;
 
-$R1: #F16C78;
+$R1: #f16c78;
+$R2: #f76363;
+$R3: #ffefef;
+
+$B1: #2e91bd;
+$B2: #e6f7ff;
 
 /* ---FONT SIZE--- */
 @function calcRem($size) {
@@ -21,6 +27,7 @@ $H24: calcRem(24px);
 $H20: calcRem(20px);
 $H18: calcRem(18px);
 $H16: calcRem(16px);
+$H15: calcRem(15px);
 $H14: calcRem(14px);
 $H13: calcRem(13px);
 $H12: calcRem(12px);

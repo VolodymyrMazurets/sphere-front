@@ -4,19 +4,18 @@
  Date: July 2013 (three.js v59dev)
 */
 
-// standard global variables
-var container, scene, camera, renderer, controls, stats, particle;
-var clock = new THREE.Clock();
-// custom global variables
-var shape;
-var speed = 0.00002;
-var ySpeed = 0.002;
-var SCREEN_WIDTH = window.innerWidth,
-  SCREEN_HEIGHT = window.innerHeight;
-var radius = 20;
-
 // FUNCTIONS
 function init() {
+  // standard global variables
+  var container, scene, camera, renderer, controls, stats, particle;
+  var clock = new THREE.Clock();
+  // custom global variables
+  var shape;
+  var speed = 0.00002;
+  var ySpeed = 0.002;
+  var SCREEN_WIDTH = window.innerWidth,
+    SCREEN_HEIGHT = window.innerHeight;
+  var radius = 20;
   // SCENE
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
@@ -133,9 +132,10 @@ function detect_mobile() {
 
 if (!detect_mobile()) {
   document.addEventListener("DOMContentLoaded", init);
-} else {
-  radius = 15;
-  $("meta[name=viewport]").remove();
-  $("#canvas").css("left", "-20%");
-  document.addEventListener("DOMContentLoaded", init);
-}
+} 
+// else {
+//   radius = 15;
+//   $("meta[name=viewport]").remove();
+//   $("#canvas").css("left", "-20%");
+//   document.addEventListener("DOMContentLoaded", init);
+// }

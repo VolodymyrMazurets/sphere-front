@@ -33,7 +33,7 @@
       margin-right: 16px;
       font-size: 24px;
   }
-  &__btn-search {
+  & &__btn-search {
     width: 202px;
     background: rgba($V2, 0.1);
     border: none;
@@ -45,6 +45,22 @@
     &:active,
     &:focus {
       background: rgba($V2, 0.1);
+    }
+  }
+  &__expanded {
+    padding: 20px 0;
+    &-item {
+      @include flex(center, center)
+    }
+    &-link {
+      flex: 1;
+      padding: 14px 0;
+      font-size: 18px;
+      color: $N1;
+      @include flex(center, center);
+      &._small {
+        font-size: 23px;
+      }
     }
   }
 }

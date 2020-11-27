@@ -1,0 +1,57 @@
+@import "../../../../scss/core.scss";
+.SearchViewHeader {
+  padding-bottom: 38px;
+  &__title {
+    @include text($H20, 600, $N1);
+    margin: 0;
+  }
+  & &__btn {
+    background: $N0;
+    border: none;
+    box-shadow: none;
+    @include text($H13, 500, $N1);
+    text-shadow: none;
+    margin-bottom: 30px;
+    height: 60px;
+    padding: 0 28px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: rgba($V2, 0.1);
+    }
+  }
+  & &__icon {
+    margin-left: 24px;
+    font-size: 16px;
+  }
+  &__select {
+    @include flex(flex-start, center);
+    background-color: $N0;
+    border-radius: 30px;
+    height: 60px;
+    padding: 0 24px;
+    margin-right: 30px;
+    &-label {
+      margin-right: 34px;
+      @include text($H13, 500, $N2);
+    }
+    &-box.ant-select {
+      width: 210px;
+
+      .ant-select-selector {
+        border: none;
+        box-shadow: none !important;
+      }
+      .ant-select-selection-item {
+        @include text($H13, 500, $N1);
+      }
+      .ant-select-selection-search-input {
+        color: red;
+      }
+      .ant-select-arrow {
+        font-size: 10px;
+        color: #a1a5af;
+      }
+    }
+  }
+}

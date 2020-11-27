@@ -1,0 +1,13 @@
+@import "../../scss/core.scss";
+.ResultView {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 30px 20px;
+  height: calc(100vh - 82px);
+  overflow-y: auto;
+  background: rgba($N0, 0.3);
+  border: 2px solid rgba($N0, 0.5);
+  border-radius: 20px;
+  z-index: 1;
+}

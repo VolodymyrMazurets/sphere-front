@@ -1,10 +1,17 @@
 import "./HomeMainContent.scss";
 
+import React, { useEffect } from "react";
+
 import { Button } from "antd";
-import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
+// import "../../../../assets/js/three_sphere";
+
+// const sphere  = require("../../../../assets/js/three_sphere");
 
 const sphereBlock = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+  }, []);
   return (
     <div className="HomeMainContent__sphere-block">
       <h2 className="HomeMainContent__title">SPhere 3js Graphic</h2>

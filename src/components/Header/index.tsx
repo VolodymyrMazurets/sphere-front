@@ -1,21 +1,49 @@
 import "./TheHeader.scss";
 
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
+import { Link, useHistory } from "react-router-dom";
 import React, { useState } from "react";
 
 import Avatar from "antd/lib/avatar/avatar";
-import { Link } from "react-router-dom";
+import { CustomIcon } from "../CustomIcon";
 import Logo from "../../assets/png/logo.png";
 import { UserOutlined } from "@ant-design/icons";
+import classNames from "classnames";
 
-export const TheHeader: React.FC = () => {
+interface TheHeaderProps {
+  className?: string;
+  showNav?: boolean;
+}
+
+export const TheHeader: React.FC<TheHeaderProps> = ({ className, showNav }) => {
   const [user] = useState("Rehanna");
+  const { goBack, goForward } = useHistory();
   return (
-    <Row justify="space-between" className="TheHeader">
+    <Row justify="space-between" className={classNames("TheHeader", className)}>
       <Col>
-        <Link to="/">
-          <img src={Logo} alt="" className="TheHeader__logo" />
-        </Link>
+        <Row align="middle">
+          <Link to="/">
+            <img src={Logo} alt="" className="TheHeader__logo" />
+          </Link>
+          {showNav && (
+            <Row style={{ marginLeft: 85 }}>
+              <Button
+                type="primary"
+                shape="circle"
+                icon={<CustomIcon icon="arrow-left" />}
+                className="TheHeader__btn _white"
+                onClick={() => goBack()}
+              />
+              <Button
+                type="primary"
+                shape="circle"
+                icon={<CustomIcon icon="arrow-right" />}
+                className="TheHeader__btn"
+                onClick={() => goForward()}
+              />
+            </Row>
+          )}
+        </Row>
       </Col>
       <Col>
         <Row align="middle" gutter={21}>
