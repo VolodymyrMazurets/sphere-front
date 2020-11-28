@@ -87,4 +87,21 @@ ul {
       max-width: 125px;
     }
   }
+  & &__modal-wrap {
+    @include flex(flex-start, center);
+    & > div {
+      margin: 0 370px;
+    }
+    & .ant-modal-content {
+      border-radius: 20px;
+      & .ant-modal-close-x {
+        width: 74px;
+        font-size: 14px;
+        color: $N1;
+      }
+      & .ant-modal-close {
+        top: 18px;
+      }
+    }
+  }
 }

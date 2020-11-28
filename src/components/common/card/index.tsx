@@ -66,7 +66,7 @@ export const TheCard: React.FC<TheCardProps> = ({ className }) => {
             icon={<CustomIcon icon="favorite" style={{ fontSize: 18 }} />}
             size="large"
           >
-            Search
+            Favorite
           </Button>
         </Col>
         <Col span={12}>
@@ -77,7 +77,7 @@ export const TheCard: React.FC<TheCardProps> = ({ className }) => {
             icon={<CustomIcon icon="list" style={{ fontSize: 18 }} />}
             size="large"
           >
-            Search
+            Add to List
           </Button>
         </Col>
       </Row>

@@ -8,9 +8,8 @@ import { CustomIcon } from "../CustomIcon";
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import classNames from "classnames";
-
-// import { searchModalActions } from "../../store/modules/searchModal";
-// import { useDispatch } from "react-redux";
+import { searchModalActions } from "../../store/modules/searchModal";
+import { useDispatch } from "react-redux";
 
 interface TheMenuProps {
   className?: ClassValue;
@@ -18,8 +17,8 @@ interface TheMenuProps {
 }
 
 export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
-  // const dispatch = useDispatch();
-  const { push, goBack, goForward } = useHistory();
+  const dispatch = useDispatch();
+  const { goBack, goForward } = useHistory();
 
   const renderHomeMenu = () => {
     return (
@@ -46,8 +45,7 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
           shape="round"
           icon={<SearchOutlined />}
           size="large"
-          onClick={() => push("/result")}
-          // onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
+          onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
         >
           Search
         </Button>
@@ -79,9 +77,13 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
     return (
       <ul className="TheMenu__expanded">
         <li className="TheMenu__expanded-item">
-          <Link to="/result" className="TheMenu__expanded-link">
+          <Button
+            type="link"
+            onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
+            className="TheMenu__expanded-link"
+          >
             <CustomIcon icon="search" />
-          </Link>
+          </Button>
         </li>
         <li className="TheMenu__expanded-item">
           <Link to="/list" className="TheMenu__expanded-link _small">

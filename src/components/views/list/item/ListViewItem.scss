@@ -1,0 +1,29 @@
+@import "../../../../scss/core.scss";
+.ListViewItem {
+  background: linear-gradient(
+    13.83deg,
+    #ffffff 23.03%,
+    rgba(255, 255, 255, 0.25) 104.48%
+  );
+  border-radius: 20px;
+  padding: 16px 0;
+  cursor: pointer;
+  &__col {
+    @include flex(flex-start, center);
+  }
+  &__name {
+    @include text($H13, 500, $B1);
+    padding-left: 24px;
+  }
+  &__value {
+    @include text($H13, 500, $N2);
+    margin: 0;
+  }
+  &__avatar {
+      border: 2px solid $N0;
+    &._second {
+        position: relative;
+        left: -8px;
+    }
+  }
+}

@@ -10,4 +10,24 @@
   border: 2px solid rgba($N0, 0.5);
   border-radius: 20px;
   z-index: 1;
+  & &__btn {
+    background: $N0;
+    border: none;
+    box-shadow: none;
+    @include text($H13, 500, $N1);
+    text-shadow: none;
+    margin-bottom: 30px;
+    height: 60px;
+    padding: 0 28px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: rgba($V2, 0.1);
+    }
+  }
+  & &__icon {
+    margin-left: 24px;
+    font-size: 10px;
+    color: $N2;
+  }
 }

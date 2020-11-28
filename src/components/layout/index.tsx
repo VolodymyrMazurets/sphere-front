@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "antd";
 import React from "react";
 import { RootState } from "../../store/types";
+import { SearchModalContent } from "../SearchModalContent";
 import { TheHeader } from "../Header";
 import { TheMenu } from "../Menu";
 import classNames from "classnames";
@@ -16,29 +17,43 @@ export const MainLayout: React.FC = ({ children }) => {
   );
   const { pathname } = useLocation();
 
-  const isHomePage = () => pathname === "/";
+  const isNotExpandedView = () => pathname === "/" || pathname === "/list";
 
   return (
     <>
-      <TheHeader showNav={!isHomePage()} />
-      <div className={classNames("App__inner", { _home: isHomePage() })}>
+      <TheHeader showNav={!isNotExpandedView()} />
+      <div
+        className={classNames("App__inner", {
+          _home: isNotExpandedView() && pathname === "/",
+        })}
+      >
         <Modal
+          maskStyle={{
+            left: !isNotExpandedView() ? 125 : 300,
+            borderRadius: "20px 0 0 20px",
+            background: "#131f3873",
+          }}
+          bodyStyle={{ borderRadius: 20, padding: 30 }}
+          wrapClassName="App__modal-wrap"
           visible={isVisible}
+          centered
+          width={655}
+          footer={null}
           onCancel={() => dispatch(searchModalActions["SEARCH_MODAL_HIDE"]())}
           getContainer={"#modalContainer"}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <SearchModalContent />
         </Modal>
         <TheMenu
-          className={classNames("App__menu", { _expanded: !isHomePage() })}
-          expanded={!isHomePage()}
+          className={classNames("App__menu", {
+            _expanded: !isNotExpandedView(),
+          })}
+          expanded={!isNotExpandedView()}
         />
         <div
           id="modalContainer"
           className={classNames("App__modal-container", {
-            "_more-padding": !isHomePage(),
+            "_more-padding": !isNotExpandedView(),
           })}
         >
           {children}

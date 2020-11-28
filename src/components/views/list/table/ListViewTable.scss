@@ -1,0 +1,16 @@
+@import "../../../../scss/core.scss";
+
+.ListViewTable {
+  & &__divider {
+    border-top-color: $N3;
+  }
+  &__head-name {
+      @include text($H15, 500, $N1);
+      &._first {
+          padding-left: 24px;
+      }
+  }
+  &__item:not(:last-child) {
+      margin-bottom: 14px;
+  }
+}

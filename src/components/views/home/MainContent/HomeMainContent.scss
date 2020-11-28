@@ -8,13 +8,13 @@
     margin-bottom: 20px;
     flex: 1;
     position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      @include position;
-      @extend %block-styles;
-      z-index: 0;
-    }
+    // &:before {
+    //   content: "";
+    //   position: absolute;
+    //   @include position;
+    //   @extend %block-styles;
+    //   z-index: 0;
+    // }
   }
   &__title {
     @include text($H20, 600, $N1);

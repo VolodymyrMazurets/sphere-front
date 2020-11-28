@@ -4,17 +4,13 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-// import "../../../../assets/js/three_sphere";
-
-// const sphere  = require("../../../../assets/js/three_sphere");
+import { searchModalActions } from "../../../../store/modules/searchModal";
+import { sphereInit } from "../../../../assets/js/three_sphere";
+import { useDispatch } from "react-redux";
 
 const sphereBlock = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-  }, []);
   return (
     <div className="HomeMainContent__sphere-block">
-      <h2 className="HomeMainContent__title">SPhere 3js Graphic</h2>
       <div id="canvas" className="HomeMainContent__sphere"></div>
     </div>
   );
@@ -34,6 +30,12 @@ const quotesBlock = () => {
 };
 
 export const HomeMainContent: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    sphereInit();
+  }, []);
+
   return (
     <div className="HomeMainContent">
       {sphereBlock()}
@@ -43,6 +45,7 @@ export const HomeMainContent: React.FC = () => {
         shape="round"
         icon={<SearchOutlined />}
         size="large"
+        onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
       >
         Search Now
       </Button>

@@ -1,4 +1,5 @@
 export enum RouteTypes {
   home = '/',
-  result = '/result'
+  result = '/result',
+  list = '/list',
 }

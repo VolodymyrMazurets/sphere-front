@@ -1,0 +1,40 @@
+@import "../../../scss/core.scss";
+
+.TheButton {
+  &.ant-btn {
+    background: $N0;
+    border: none;
+    box-shadow: none;
+    @include text($H13, 500, $N1);
+    text-shadow: none;
+    @include flex(center, center);
+    &:hover,
+    &:active,
+    &:focus {
+      background: rgba($V2, 0.1);
+    }
+    &.circle {
+      width: 50px;
+      height: 50px;
+    }
+    &.round {
+      padding: 0 28px;
+      height: 58px;
+    }
+    &.danger {
+        color: $N0;
+      background: $R1;
+      &:hover,
+      &:active,
+      &:focus {
+        background: rgba($R1, 0.6);
+      }
+    }
+  }
+
+  & &__icon {
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

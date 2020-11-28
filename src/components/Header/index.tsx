@@ -9,9 +9,10 @@ import { CustomIcon } from "../CustomIcon";
 import Logo from "../../assets/png/logo.png";
 import { UserOutlined } from "@ant-design/icons";
 import classNames from "classnames";
+import { ClassValue } from "classnames/types";
 
 interface TheHeaderProps {
-  className?: string;
+  className?: ClassValue;
   showNav?: boolean;
 }
 
