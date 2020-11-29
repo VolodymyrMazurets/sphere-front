@@ -8,8 +8,10 @@ import { ReactComponent as IconExport } from "../../assets/svg/Export.svg";
 import { ReactComponent as IconFavorite } from "../../assets/svg/FavouriteInfluencerIcon.svg";
 import { ReactComponent as IconHelp } from "../../assets/svg/HelpIcon.svg";
 import { ReactComponent as IconList } from "../../assets/svg/List.svg";
+import { ReactComponent as IconLocation } from "../../assets/svg/Location.svg";
 import { ReactComponent as IconSearch } from "../../assets/svg/Search.svg";
 import { ReactComponent as IconSettings } from "../../assets/svg/Settings.svg";
+import { ReactComponent as IconStar } from "../../assets/svg/Star.svg";
 
 export interface CustomIconProps {
   className?: string;
@@ -28,6 +30,8 @@ export type IconTypes =
   | "search"
   | "add"
   | "settings"
+  | "location"
+  | "star"
   | React.FC<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
 
 // Why to do this in typescript? Better for testing all of icons to do snapshots
@@ -41,6 +45,8 @@ export const iconsTypes: { [key: string]: IconTypes } = {
   SEARCH: "search",
   ADD: "add",
   SETTINGS: "settings",
+  LOCATION: "location",
+  STAR: "star",
 };
 
 const getName = (name?: IconTypes) => `icon-${name}`;
@@ -58,6 +64,8 @@ export const CustomIcon: React.FC<CustomIconProps> = (props) => {
     [getName("search")]: IconSearch,
     [getName("add")]: IconAdd,
     [getName("settings")]: IconSettings,
+    [getName("location")]: IconLocation,
+    [getName("star")]: IconStar,
   };
 
   const IconComponent = icons[getName(icon)] || null;

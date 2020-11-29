@@ -22,13 +22,17 @@
       height: 58px;
     }
     &.danger {
-        color: $N0;
+      color: $N0;
       background: $R1;
       &:hover,
       &:active,
       &:focus {
         background: rgba($R1, 0.6);
       }
+    }
+    &.light {
+      border: 1px solid $N3;
+      background-color: transparent;
     }
   }
 

@@ -1,0 +1,30 @@
+@import "../../scss/core.scss";
+
+.ProfileView {
+  flex: 1;
+  padding: 30px 20px;
+  height: calc(100vh - 82px);
+  overflow-y: auto;
+
+  &__head {
+    padding: 24px 30px;
+    background-color: rgba($N0, 0.5);
+    border-radius: 100px;
+    margin-bottom: 30px;
+  }
+  &__block {
+    padding: 30px;
+    @extend %block-styles;
+    border: none;
+    margin-bottom: 15px;
+    &._mb-less {
+      margin-bottom: 0;
+    }
+  }
+  &__title {
+    @include text($H20, 500, $N1);
+  }
+  &__info {
+    margin-bottom: 15px;
+  }
+}

@@ -15,7 +15,7 @@ interface TheButtonProps {
   shape?: ButtonShape;
   iconSize?: number;
   iconColor?: string;
-  type?: "primary" | "danger";
+  type?: "primary" | "danger" | "light";
   onClick?: React.MouseEventHandler<HTMLElement>;
   iconLeft?: boolean;
 }

@@ -1,0 +1,24 @@
+@import "../../../../scss/core.scss";
+.ProfileViewInfo {
+  flex-wrap: nowrap;
+  &__small-title {
+    @extend %profile-block-title;
+  }
+  &__value {
+    @include text($H24, 600, $N1);
+    margin: 0;
+  }
+  &__text {
+    @include text($H13, 400, $N1);
+    line-height: 1.8;
+  }
+  &__card {
+    @extend %block-styles;
+    border: none;
+    padding: 30px;
+    min-width: 242px;
+    &._mb {
+      margin-bottom: 16px;
+    }
+  }
+}
