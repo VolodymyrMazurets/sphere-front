@@ -1,0 +1,6 @@
+@import "../../../../scss/core.scss";
+.ProfileViewHashTags {
+  &__small-title {
+    @extend %profile-block-title;
+  }
+}

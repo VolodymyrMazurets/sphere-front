@@ -1,0 +1,7 @@
+@import "../../../../scss/core.scss";
+
+.ProfileViewVideosChart {
+  &__small-title {
+    @extend %profile-block-title;
+  }
+}

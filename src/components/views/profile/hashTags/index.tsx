@@ -1,4 +1,4 @@
-import "./ProfileViewCommonTags.scss";
+import "./ProfileViewHashTags.scss";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "tippy.js/animations/scale.css";
@@ -9,115 +9,115 @@ import React from "react";
 
 const words = [
   {
-    text: "@told",
+    text: "#told",
     value: 64,
   },
   {
-    text: "@mistake",
+    text: "#mistake",
     value: 11,
   },
   {
-    text: "@thought",
+    text: "#thought",
     value: 16,
   },
   {
-    text: "@bad",
+    text: "#bad",
     value: 17,
   },
   {
-    text: "@mtetestst",
+    text: "#mtetestst",
     value: 11,
   },
   {
-    text: "@city",
+    text: "#city",
     value: 16,
   },
   {
-    text: "@Ukraine",
+    text: "#Ukraine",
     value: 98,
   },
   {
-    text: "@told",
+    text: "#told",
     value: 64,
   },
   {
-    text: "@mistake",
+    text: "#mistake",
     value: 11,
   },
   {
-    text: "@thought",
+    text: "#thought",
     value: 16,
   },
   {
-    text: "@bad",
+    text: "#bad",
     value: 27,
   },
   {
-    text: "@mtetestst",
+    text: "#mtetestst",
     value: 14,
   },
   {
-    text: "@city",
+    text: "#city",
     value: 20,
   },
   {
-    text: "@Kremenchuk",
+    text: "#Kremenchuk",
     value: 98,
   },
   {
-    text: "@told",
+    text: "#told",
     value: 64,
   },
   {
-    text: "@mistake",
+    text: "#mistake",
     value: 11,
   },
   {
-    text: "@thought",
+    text: "#thought",
     value: 16,
   },
   {
-    text: "@bad",
+    text: "#bad",
     value: 17,
   },
   {
-    text: "@mtetestst",
+    text: "#mtetestst",
     value: 11,
   },
   {
-    text: "@city",
+    text: "#city",
     value: 16,
   },
   {
-    text: "@Ukraine",
+    text: "#Ukraine",
     value: 98,
   },
   {
-    text: "@told",
+    text: "#told",
     value: 64,
   },
   {
-    text: "@mistake",
+    text: "#mistake",
     value: 11,
   },
   {
-    text: "@thought",
+    text: "#thought",
     value: 16,
   },
   {
-    text: "@bad",
+    text: "#bad",
     value: 27,
   },
   {
-    text: "@mtetestst",
+    text: "#mtetestst",
     value: 14,
   },
   {
-    text: "@city",
+    text: "#city",
     value: 20,
   },
   {
-    text: "@Kremenchuk",
+    text: "#Kremenchuk",
     value: 98,
   },
 ];
@@ -132,11 +132,11 @@ const config: OptionsProp = {
   tooltipOptions: { theme: "light" },
 };
 
-export const ProfileViewCommonTags: React.FC = () => {
+export const ProfileViewHashTags: React.FC = () => {
   return (
     <>
-      <span className="ProfileViewCommonTags__small-title">
-        Display of Most Common Tags
+      <span className="ProfileViewHashTags__small-title">
+        Display of Most Common Hastags
       </span>
 
       <ReactWordcloud words={words} options={config} />

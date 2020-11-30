@@ -1,0 +1,21 @@
+@import "../../../scss/core.scss";
+.TheRadioGroup {
+  & .ant-radio-button-wrapper {
+    border: none;
+    background-color: transparent;
+    @include text($H12, 400, $N2);
+    width: 45px;
+  }
+  & .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+      color: $V1;
+      font-weight: 600;
+    box-shadow: none;
+
+  }
+  & .ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper:first-child {
+      border: none;
+  }
+  & .ant-radio-button-wrapper:not(:first-child)::before {
+      content: none;
+  }
+}

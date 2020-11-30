@@ -1,0 +1,11 @@
+@import "../../../../scss/core.scss";
+
+.ProfileViewFolowersChart {
+  height: 100%;
+  &__small-title {
+    @extend %profile-block-title;
+  }
+  &__controls {
+    @include flex(flex-end);
+  }
+}
