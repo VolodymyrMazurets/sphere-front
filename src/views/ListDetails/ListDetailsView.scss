@@ -1,6 +1,5 @@
 @import "../../scss/core.scss";
-
-.FavoriteView {
+.ListDetailsView {
   flex: 1;
   position: relative;
   z-index: 1;
@@ -40,13 +39,14 @@
   }
   &__head-value {
     @include text($H20, 500, $N1);
+    
   }
   &__head-arrow {
     transform: rotate(180deg);
     @include flex(center, center);
     color: $N2;
     svg {
-      height: 20px !important;
+      height: 20px!important;
     }
   }
 }

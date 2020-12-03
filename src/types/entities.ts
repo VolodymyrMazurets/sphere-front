@@ -1,3 +1,5 @@
-import { AccountResponseType } from "../services/http/types";
+import { AllInfluencerListsResponseType, ListDetailsInfluencersResponseType, ListDetailsResponseType } from "../services/http/types";
 
-export interface AccountType extends AccountResponseType {}
+export interface ListType extends AllInfluencerListsResponseType {}
+export interface ListDetailsType extends ListDetailsResponseType {}
+export interface SearchType extends ListDetailsInfluencersResponseType {}

@@ -34,6 +34,9 @@
       border: 1px solid $N3;
       background-color: transparent;
     }
+    &.ant-btn[disabled] {
+      background-color: $N3;
+    }
   }
 
   & &__icon {

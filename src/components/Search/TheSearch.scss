@@ -1,0 +1,18 @@
+@import "../../scss/core.scss";
+.TheInput {
+  border-radius: 40px;
+  background-color: rgba($V2, 0.1);
+  height: 50px;
+  padding: 0 30px;
+  border: none;
+  width: 100%;
+  @include text($H13, 500, $N1);
+  outline: none;
+  &::placeholder {
+    color: rgba($N2, 0.4);
+  }
+}
+.pac-container {
+    border-radius: 8px;
+
+}

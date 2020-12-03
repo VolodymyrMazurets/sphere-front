@@ -4,11 +4,14 @@ import Icon from "@ant-design/icons";
 import { ReactComponent as IconAdd } from "../../assets/svg/Add.svg";
 import { ReactComponent as IconArrowLeft } from "../../assets/svg/arrowLeft.svg";
 import { ReactComponent as IconArrowRight } from "../../assets/svg/arrowRight.svg";
+import { ReactComponent as IconDelete } from "../../assets/svg/delete.svg";
 import { ReactComponent as IconExport } from "../../assets/svg/Export.svg";
 import { ReactComponent as IconFavorite } from "../../assets/svg/FavouriteInfluencerIcon.svg";
 import { ReactComponent as IconHelp } from "../../assets/svg/HelpIcon.svg";
 import { ReactComponent as IconList } from "../../assets/svg/List.svg";
 import { ReactComponent as IconLocation } from "../../assets/svg/Location.svg";
+import { ReactComponent as IconLongArrow } from "../../assets/svg/LongArrow.svg";
+import { ReactComponent as IconPen } from "../../assets/svg/pen.svg";
 import { ReactComponent as IconSearch } from "../../assets/svg/Search.svg";
 import { ReactComponent as IconSettings } from "../../assets/svg/Settings.svg";
 import { ReactComponent as IconStar } from "../../assets/svg/Star.svg";
@@ -32,6 +35,9 @@ export type IconTypes =
   | "settings"
   | "location"
   | "star"
+  | "long-arrow"
+  | "pen"
+  | "delete"
   | React.FC<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
 
 // Why to do this in typescript? Better for testing all of icons to do snapshots
@@ -47,6 +53,9 @@ export const iconsTypes: { [key: string]: IconTypes } = {
   SETTINGS: "settings",
   LOCATION: "location",
   STAR: "star",
+  LONG_ARROW: "long-arrow",
+  PEN: "pen",
+  DELETE: "delete",
 };
 
 const getName = (name?: IconTypes) => `icon-${name}`;
@@ -66,6 +75,9 @@ export const CustomIcon: React.FC<CustomIconProps> = (props) => {
     [getName("settings")]: IconSettings,
     [getName("location")]: IconLocation,
     [getName("star")]: IconStar,
+    [getName("long-arrow")]: IconLongArrow,
+    [getName("pen")]: IconPen,
+    [getName("delete")]: IconDelete,
   };
 
   const IconComponent = icons[getName(icon)] || null;

@@ -1,41 +1,116 @@
 import "./ResultView.scss";
 
 import { Button, Col, Row } from "antd";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { DownOutlined } from "@ant-design/icons";
-import React from "react";
+import { RootState } from "../../store/types";
 import { SearchViewHeader } from "../../components/views";
 import { TheCard } from "../../components/common";
-import { useHistory } from "react-router-dom";
+import { listActions } from "../../store/modules/list";
+import { map } from "lodash";
+import { searchActions } from "../../store/modules/search";
+import { size } from "lodash";
+
+interface FilterInterface {
+  SortBy?: "Followers" | "Engagement";
+  SortOrder?: "ASC" | "DESC";
+}
 
 export const ResultView: React.FC = () => {
-  const { push } = useHistory();
+  const dispatch = useDispatch();
+  const { searchResult, searchPayload, loading } = useSelector(
+    ({ searchState }: RootState) => searchState
+  );
+  const getFilter = (value: string): FilterInterface => {
+    switch (true) {
+      case value === "1":
+        return {
+          SortBy: "Followers",
+          SortOrder: "DESC",
+        };
+      case value === "2":
+        return {
+          SortBy: "Followers",
+          SortOrder: "ASC",
+        };
+      case value === "3":
+        return {
+          SortBy: "Engagement",
+          SortOrder: "DESC",
+        };
+      case value === "4":
+        return {
+          SortBy: "Engagement",
+          SortOrder: "ASC",
+        };
+      default:
+        return {
+          SortBy: "Followers",
+          SortOrder: "DESC",
+        };
+    }
+  };
+
+  const handleMoreButtonClick = async () => {
+    await dispatch(
+      searchActions["SEARCH_REQUEST"]({
+        ...searchPayload,
+        Page: Number(searchPayload.Page) + 1,
+      })
+    );
+  };
+
+  const handleFilter = async (e: string) => {
+    const value = getFilter(e);
+
+    dispatch(searchActions["SEARCH_CLEAR"]());
+    await dispatch(
+      searchActions["SEARCH_REQUEST"]({
+        ...searchPayload,
+        SortBy: value?.SortBy,
+        SortOrder: value?.SortOrder,
+      })
+    );
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch(listActions["LIST_REQUEST"]());
+    };
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div className="ResultView">
-      <SearchViewHeader />
+      <SearchViewHeader onChange={(e) => handleFilter(e)} />
       <Row gutter={[30, 30]}>
-        {[1, 2, 3, 4, 5, 6].map((e) => {
+        {map(searchResult, (e) => {
           return (
-            <Col key={e} span={8} onClick={() => push("/profile")}>
-              <TheCard />
+            <Col key={e.InfluencerId} span={8}>
+              <TheCard data={e} />
             </Col>
           );
         })}
       </Row>
       <Row justify="center">
-        <Button
-          className="ResultView__btn"
-          type="primary"
-          shape="round"
-          size="large"
-        >
-          Load more
-          <DownOutlined
-            className="ResultView__icon"
-            style={{ marginLeft: 24 }}
-          />
-        </Button>
+        {size(searchResult) > 8 && (
+          <Button
+            className="ResultView__btn"
+            type="primary"
+            shape="round"
+            size="large"
+            onClick={handleMoreButtonClick}
+            loading={loading}
+          >
+            Load more
+            <DownOutlined
+              className="ResultView__icon"
+              style={{ marginLeft: 24 }}
+            />
+          </Button>
+        )}
       </Row>
     </div>
   );

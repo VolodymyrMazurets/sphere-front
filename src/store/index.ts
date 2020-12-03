@@ -1,13 +1,17 @@
 import { MiddlewareArray, configureStore } from "@reduxjs/toolkit";
 
-import { accountReducer } from "./modules/account";
 import { combineReducers } from "redux";
+import { listDetailsReducer } from "./modules/listDetails";
+import { listReducer } from "./modules/list";
 import logger from "redux-logger";
 import { searchModalReducer } from "./modules/searchModal";
+import { searchReducer } from "./modules/search";
 import thunk from "redux-thunk";
 
 export const rootReducer = combineReducers({
-  accountState: accountReducer,
+  listState: listReducer,
+  listDetailsState: listDetailsReducer,
+  searchState: searchReducer,
   searchModalState: searchModalReducer,
 });
 

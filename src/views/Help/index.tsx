@@ -2,10 +2,9 @@ import "./HelpView.scss";
 
 import React from "react";
 
-export const HelpView: React.FC = () => {
+export const HelpView = () => {
+
   return (
-    <div className="HelpView">
-      <h1>Help View</h1>
-    </div>
+    <h1>help</h1>
   );
 };

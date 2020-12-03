@@ -2,27 +2,105 @@ import "./SearchModalContent.scss";
 
 import { Col, Input, InputNumber, Radio, Row } from "antd";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { RadioChangeEvent } from "antd/lib/radio";
+import { RootState } from "../../store/types";
+import { SearchPayloadType } from "../../services/http/types";
 import { TheButton } from "../common/buttons";
+import { TheSearch } from "../Search";
+import { searchActions } from "../../store/modules/search";
 import { searchModalActions } from "../../store/modules/searchModal";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+const initialSearchState: SearchPayloadType = {
+  SearchString: "",
+  LocationViewport: {
+    TopLeft: "34.257260,-118.654152",
+    BottomRight: "33.791492,-117.647507",
+  },
+  LocationName: "",
+  MinFollowers: 1,
+  MaxFollowers: 10000000,
+  SortBy: "Followers",
+  SortOrder: "DESC",
+  MinAvgViews: 1,
+  MinAvgComments: 1,
+  Verified: true,
+  HasEmail: true,
+  Page: 1,
+};
 
 export const SearchModalContent: React.FC = () => {
   const dispatch = useDispatch();
   const { push } = useHistory();
-  const [radios, setRadios] = useState({ first: 1, second: 1, third: 1 });
-  const onChange = (e: RadioChangeEvent, name: string) => {
-    console.log("radio checked", e.target.value);
-    setRadios((prevState) => {
-      console.log(prevState);
+  const [formData, setFormData] = useState({ ...initialSearchState });
+  const { loading } = useSelector(({ searchState }: RootState) => searchState);
+
+  const onRadiosChange = (e: RadioChangeEvent, name: string) => {
+    setFormData((prevState) => {
       return {
         ...prevState,
         [name]: e.target.value,
       };
     });
   };
+
+  const onInputsChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    name: string
+  ) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [name]: e.target.value,
+      };
+    });
+  };
+
+  const onInputTypeNumberChange = (
+    e: number | undefined | string,
+    name: string
+  ) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [name]: e,
+      };
+    });
+  };
+
+  const onLocationChange = (viewport?: google.maps.LatLngBounds) => {
+    interface ViewpotCustom {
+      Sa: {
+        i: number;
+        j: number;
+      };
+      Wa: {
+        i: number;
+        j: number;
+      };
+    }
+    const shallowCopy = { ...viewport } as ViewpotCustom;
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        LocationViewport: {
+          TopLeft: `${shallowCopy.Wa.j},${shallowCopy.Sa.i}`,
+          BottomRight: `${shallowCopy.Wa.i},${shallowCopy.Sa.j}`,
+        },
+      };
+    });
+  };
+
+  const handleButtonClick = async () => {
+    dispatch(searchActions["SEARCH_CLEAR"]());
+    await dispatch(searchActions["SEARCH_REQUEST"]({ ...formData }));
+    push("/result");
+    dispatch(searchModalActions["SEARCH_MODAL_HIDE"]());
+  };
+
+  // const onPlacesChanged = () => console.log(searchBox?.getPlaces());
 
   return (
     <div className="SearchModalContent">
@@ -33,6 +111,7 @@ export const SearchModalContent: React.FC = () => {
             Username, Keyword, or Tag
           </span>
           <Input
+            onChange={(e) => onInputsChange(e, "SearchString")}
             placeholder="Ex: @Nike, Fitness, #Sports"
             className="SearchModalContent__input"
           />
@@ -41,9 +120,15 @@ export const SearchModalContent: React.FC = () => {
           <span className="SearchModalContent__label">
             By Location (Using Google Places Autocomplete API)
           </span>
-          <Input
+          {/* <Input
+            disabled
             placeholder="Ex: London or United States"
             className="SearchModalContent__input"
+          /> */}
+          <TheSearch
+            onChange={(e) =>
+              onLocationChange(e?.getPlaces()[0].geometry?.viewport)
+            }
           />
         </Col>
         <Col span={24} className="SearchModalContent__col">
@@ -53,6 +138,7 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Following*
               </span>
               <InputNumber
+                onChange={(e) => onInputTypeNumberChange(e, "MinFollowers")}
                 placeholder="Ex 5,000"
                 className="SearchModalContent__input"
               />
@@ -62,19 +148,21 @@ export const SearchModalContent: React.FC = () => {
                 Maximum Following*
               </span>
               <InputNumber
+                onChange={(e) => onInputTypeNumberChange(e, "MaxFollowers")}
                 placeholder="Ex 5,000,000"
                 className="SearchModalContent__input"
               />
             </Col>
-            <Col span={8}>
+            {/* <Col span={8}>
               <span className="SearchModalContent__label">
                 Minimum Engagement%
               </span>
               <InputNumber
+                onChange={(e) => onInputTypeNumberChange(e, "MaxFollowers")}
                 placeholder="Ex 1.5%"
                 className="SearchModalContent__input"
               />
-            </Col>
+            </Col> */}
           </Row>
         </Col>
         <Col span={24} className="SearchModalContent__col">
@@ -84,6 +172,7 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Avg.Views
               </span>
               <InputNumber
+                onChange={(e) => onInputTypeNumberChange(e, "MinAvgViews")}
                 placeholder="Ex 10,000"
                 className="SearchModalContent__input"
               />
@@ -93,6 +182,7 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Average Comments
               </span>
               <InputNumber
+                onChange={(e) => onInputTypeNumberChange(e, "MinAvgComments")}
                 placeholder="Ex 10"
                 className="SearchModalContent__input"
               />
@@ -104,23 +194,23 @@ export const SearchModalContent: React.FC = () => {
             <Col span={8}>
               <span className="SearchModalContent__label">Has Email?</span>
               <Radio.Group
-                value={radios.first}
-                onChange={(e) => onChange(e, "first")}
+                value={formData.HasEmail}
+                onChange={(e) => onRadiosChange(e, "HasEmail")}
                 className="SearchModalContent__radio-group"
               >
-                <Radio className="SearchModalContent__radio-btn" value={1}>
+                <Radio className="SearchModalContent__radio-btn" value={true}>
                   Yes
                 </Radio>
-                <Radio className="SearchModalContent__radio-btn" value={0}>
+                <Radio className="SearchModalContent__radio-btn" value={false}>
                   No
                 </Radio>
               </Radio.Group>
             </Col>
-            <Col span={8}>
+            {/* <Col span={8}>
               <span className="SearchModalContent__label">Has Video?</span>
               <Radio.Group
                 value={radios.second}
-                onChange={(e) => onChange(e, "second")}
+                onChange={(e) => onRadiosChange(e, "second")}
                 className="SearchModalContent__radio-group"
               >
                 <Radio className="SearchModalContent__radio-btn" value={1}>
@@ -130,18 +220,18 @@ export const SearchModalContent: React.FC = () => {
                   No
                 </Radio>
               </Radio.Group>
-            </Col>
+            </Col> */}
             <Col span={8}>
               <span className="SearchModalContent__label">Verified</span>
               <Radio.Group
-                value={radios.third}
-                onChange={(e) => onChange(e, "third")}
+                value={formData.Verified}
+                onChange={(e) => onRadiosChange(e, "Verified")}
                 className="SearchModalContent__radio-group"
               >
-                <Radio className="SearchModalContent__radio-btn" value={1}>
+                <Radio className="SearchModalContent__radio-btn" value={true}>
                   Yes
                 </Radio>
-                <Radio className="SearchModalContent__radio-btn" value={0}>
+                <Radio className="SearchModalContent__radio-btn" value={false}>
                   No
                 </Radio>
               </Radio.Group>
@@ -150,15 +240,13 @@ export const SearchModalContent: React.FC = () => {
         </Col>
         <Col span={24}>
           <TheButton
+            loading={loading}
             label="Search Now"
             className="SearchModalContent__btn"
             type="danger"
             icon="search"
             iconLeft
-            onClick={() => {
-              push("/result");
-              dispatch(searchModalActions["SEARCH_MODAL_HIDE"]());
-            }}
+            onClick={handleButtonClick}
           />
         </Col>
       </Row>

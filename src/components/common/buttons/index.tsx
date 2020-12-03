@@ -18,6 +18,8 @@ interface TheButtonProps {
   type?: "primary" | "danger" | "light";
   onClick?: React.MouseEventHandler<HTMLElement>;
   iconLeft?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
 }
 export const TheButton: React.FC<TheButtonProps> = ({
   label,
@@ -29,6 +31,8 @@ export const TheButton: React.FC<TheButtonProps> = ({
   type = "primary",
   onClick,
   iconLeft,
+  loading,
+  disabled,
 }) => {
   return (
     <Button
@@ -38,6 +42,8 @@ export const TheButton: React.FC<TheButtonProps> = ({
       className={classNames("TheButton", className, shape, type)}
       onClick={onClick}
       icon={iconLeft && <CustomIcon icon={icon} />}
+      loading={loading}
+      disabled={disabled}
     >
       {label}
       {icon && !iconLeft && (

@@ -5,12 +5,18 @@ import React, { useState } from "react";
 
 import { CustomIcon } from "../../../CustomIcon";
 
-export const SearchViewHeader: React.FC = () => {
+interface SearchViewHeaderProps {
+  onChange: (e: string) => void;
+}
+
+export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
+  onChange,
+}) => {
   const { Option } = Select;
-  const [filter, setFilter] = useState<string | undefined>(undefined);
+  const [filter] = useState<string | undefined>(undefined);
 
   const handleChange = (e: string) => {
-    setFilter(e);
+    onChange(e);
   };
   return (
     <Row className="SearchViewHeader" justify="space-between" align="middle">
@@ -19,14 +25,15 @@ export const SearchViewHeader: React.FC = () => {
         <div className="SearchViewHeader__select">
           <label className="SearchViewHeader__select-label">Sort by</label>
           <Select
-            
             placeholder="Select filter"
             onChange={handleChange}
             value={filter}
             className="SearchViewHeader__select-box"
           >
-            <Option value="1">Engagement High to Low</Option>
-            <Option value="2">Engagement Low to Hight</Option>
+            <Option value="1">Followers High to Low</Option>
+            <Option value="2">Followers Low to Hight</Option>
+            <Option value="3">Engagement Low to Hight</Option>
+            <Option value="4">Engagement Low to Hight</Option>
           </Select>
         </div>
         <Button

@@ -3,15 +3,27 @@ import "./ListViewTable.scss";
 import { Col, Divider, Row } from "antd";
 
 import { ClassValue } from "classnames/types";
+import { ListType } from "../../../../types/entities";
 import { ListViewItem } from "../item";
 import React from "react";
 import classNames from "classnames";
+import { map } from "lodash";
 
 interface ListViewTableProps {
   className?: ClassValue;
+  data?: ListType[];
+  isSettingsOpen?: boolean;
+  deleteClicked: (e: string) => void;
+  editClicked: (e: string) => void;
 }
 
-export const ListViewTable: React.FC<ListViewTableProps> = ({ className }) => {
+export const ListViewTable: React.FC<ListViewTableProps> = ({
+  className,
+  data,
+  isSettingsOpen,
+  deleteClicked,
+  editClicked,
+}) => {
   return (
     <div className={classNames("ListViewTable", className)}>
       <Row className="ListViewTable__head" gutter={20}>
@@ -32,8 +44,15 @@ export const ListViewTable: React.FC<ListViewTableProps> = ({ className }) => {
         </Col>
       </Row>
       <Divider className="ListViewTable__divider" />
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-        <ListViewItem key={item} className="ListViewTable__item" />
+      {map(data, (item) => (
+        <ListViewItem
+          deleteClicked={(e) => deleteClicked(e)}
+          editClicked={(e) => editClicked(e)}
+          key={item.ListId}
+          data={item}
+          className="ListViewTable__item"
+          isSetiingsOpen={isSettingsOpen}
+        />
       ))}
     </div>
   );

@@ -7,23 +7,24 @@
   );
   border-radius: 20px;
   padding: 16px 0;
-  cursor: pointer;
   &__col {
     @include flex(flex-start, center);
   }
   &__name {
     @include text($H13, 500, $B1);
     padding-left: 24px;
+    cursor: pointer;
   }
   &__value {
     @include text($H13, 500, $N2);
     margin: 0;
   }
   &__avatar {
-      border: 2px solid $N0;
+    border: 2px solid $N0;
+    background-color: $N3;
     &._second {
-        position: relative;
-        left: -8px;
+      position: relative;
+      left: -8px;
     }
   }
 }
