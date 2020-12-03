@@ -3,6 +3,7 @@ import {
   CreateListPayloadType,
   ListDetailsInfluencersResponseType,
   ListDetailsResponseType,
+  ProfileResponceType,
   SearchPayloadType,
 } from "./types";
 import axios, { Method } from "axios";
@@ -26,6 +27,8 @@ export const urls = {
     `${BASE_URL}/modifyinfluencerlist/${userID}/${listId}`,
   addInfluencerToList: (userID: string, listId: string | SelectValue) =>
     `${BASE_URL}/modifyinfluencerlist/${userID}/${listId}`,
+  profile: (influencerID: string) =>
+    `${BASE_URL}/influencerprofile/${influencerID}/`,
 };
 
 class HttpService {
@@ -99,6 +102,9 @@ class HttpService {
       null,
       body
     );
+  };
+  getProfile = (influencerID: string) => {
+    return this.fetchData<ProfileResponceType>(urls.profile(influencerID));
   };
 }
 

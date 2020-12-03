@@ -13,10 +13,29 @@ import {
   ProfileViewMap,
   ProfileViewVideosChart,
 } from "../../components/views/profile";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import React from "react";
+import { RootState } from "../../store/types";
+import { listActions } from "../../store/modules/list";
+import { profileActions } from "../../store/modules/profile";
+import { useParams } from "react-router-dom";
 
 export const ProfileView: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const { profile } = useSelector(
+    ({ profileState }: RootState) => profileState
+  );
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch(listActions["LIST_REQUEST"]());
+      dispatch(profileActions["PROFILE_REQUEST"](id));
+    };
+    fetchData();
+  }, [dispatch, id]);
+
   return (
     <div className="ProfileView">
       <Row>
@@ -24,10 +43,25 @@ export const ProfileView: React.FC = () => {
           <h1 className="ProfileView__title">Mona’s Brain</h1>
         </Col>
         <Col span={24} className="ProfileView__block">
-          <ProfileViewMain />
+          <ProfileViewMain
+            userData={profile?.Instagram?.Profile}
+            estimatedLocation={profile?.EstimatedLocation}
+            engagement={
+              profile?.Instagram?.EngagementMetrics
+                ?.AverageEngagementLikesComments
+            }
+          />
         </Col>
         <Col span={24}>
-          <ProfileViewInfo className="ProfileView__info" />
+          <ProfileViewInfo
+            bio={profile?.Instagram?.Profile?.Bio}
+            comments={profile?.Instagram?.EngagementMetrics?.AverageComments}
+            videos={profile?.Instagram?.EngagementMetrics?.MaxVideoViews}
+            sponsoredContent={
+              profile?.Instagram?.EngagementMetrics?.AverageEngagementLikes
+            }
+            className="ProfileView__info"
+          />
         </Col>
         <Col span={24} style={{ marginBottom: 15 }}>
           <Row align="stretch" gutter={16}>
@@ -36,7 +70,10 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 300 }}
               >
-                <ProfileViewMap />
+                <ProfileViewMap
+                  Locations={profile?.Instagram?.Locations}
+                  EstimatedLocation={profile?.EstimatedLocation}
+                />
               </div>
             </Col>
             <Col span={12} flex={1}>

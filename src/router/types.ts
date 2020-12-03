@@ -3,7 +3,7 @@ export enum RouteTypes {
   result = '/result',
   list = '/list',
   listDetails = '/list/:id',
-  profile = '/profile',
+  profile = '/profile/:id',
   favorite = '/favorite',
   help = '/help',
 }

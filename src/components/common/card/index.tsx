@@ -2,6 +2,7 @@ import "./TheCard.scss";
 
 import { Badge, Button, Col, Popover, Row, Select } from "antd";
 import { CheckCircleFilled, UserOutlined } from "@ant-design/icons";
+import { map, slice } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "antd/lib/avatar/avatar";
@@ -11,7 +12,6 @@ import React from "react";
 import { RootState } from "../../../store/types";
 import classNames from "classnames";
 import { listActions } from "../../../store/modules/list";
-import { map } from "lodash";
 import { useHistory } from "react-router-dom";
 
 const { Option } = Select;
@@ -34,7 +34,11 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
   };
 
   const content = (
-    <Select style={{ width: "100%" }} onChange={(e) => dispatch(listActions['LIST_ADD_INFLUENCER'](data, e))} className="TheCard__select">
+    <Select
+      style={{ width: "100%" }}
+      onChange={(e) => dispatch(listActions["LIST_ADD_INFLUENCER"](data, e))}
+      className="TheCard__select"
+    >
       {map(lists, (e) => {
         return (
           <Option value={e.ListId || ""} key={e.ListId}>
@@ -49,7 +53,7 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
     <div className={classNames("TheCard", className)}>
       <div
         style={{ width: "100%", cursor: "pointer" }}
-        onClick={() => push("/profile")}
+        onClick={() => push(`/profile/${data?.InfluencerId}`)}
       >
         {data?.Verified ? (
           <Badge
@@ -68,7 +72,11 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
             <Avatar
               size={96}
               icon={<UserOutlined />}
-              src={data?.ProfilePicture}
+              src={`https://i.pravatar.cc/80?img=${slice(
+                data?.InfluencerId,
+                2
+              )}`}
+              // src={data?.ProfilePicture}
               className="TheCard__avatar"
             />
           </Badge>
@@ -76,7 +84,8 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
           <Avatar
             size={96}
             icon={<UserOutlined />}
-            src={data?.ProfilePicture}
+            // src={data?.ProfilePicture || 'https://i.pravatar.cc/80'}
+            src={`https://i.pravatar.cc/80?img=${slice(data?.InfluencerId, 2)}`}
             className="TheCard__avatar"
           />
         )}

@@ -1,8 +1,8 @@
 import { ListDetailsType, ListType, SearchType } from "../types/entities";
+import { ProfileResponceType, SearchPayloadType } from "../services/http/types";
 import { rootReducer, store } from "./index";
 
 import { Action } from "redux";
-import { SearchPayloadType } from "../services/http/types";
 import { ThunkAction } from "redux-thunk";
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -39,6 +39,12 @@ export enum ActionTypes {
   SEARCH_FAILURE = "SEARCH_FAILURE",
   SEARCH_UPDATE = "SEARCH_UPDATE",
   SEARCH_CLEAR = "SEARCH_CLEAR",
+  //Profile Store
+  PROFILE_REQUEST = "PROFILE_REQUEST",
+  PROFILE_SUCCESS = "PROFILE_SUCCESS",
+  PROFILE_FAILURE = "PROFILE_FAILURE",
+  PROFILE_UPDATE = "PROFILE_UPDATE",
+  PROFILE_CLEAR = "PROFILE_CLEAR",
 }
 
 export type ListActionTypes =
@@ -66,6 +72,15 @@ export type SearchActionTypes =
   | Action<ActionTypes.SEARCH_REQUEST>
   | Action<ActionTypes.SEARCH_CLEAR>;
 
+export type ProfileActionTypes =
+  | (Action<ActionTypes.PROFILE_UPDATE> & {
+      payload: ProfileResponceType;
+    })
+  | Action<ActionTypes.PROFILE_SUCCESS>
+  | Action<ActionTypes.PROFILE_FAILURE>
+  | Action<ActionTypes.PROFILE_REQUEST>
+  | Action<ActionTypes.PROFILE_CLEAR>;
+
 export type SearchModalActionTypes =
   | Action<ActionTypes.SEARCH_MODAL_HIDE>
   | Action<ActionTypes.SEARCH_MODAL_SHOW>;
@@ -74,4 +89,5 @@ export type StoreAction =
   | SearchModalActionTypes
   | ListActionTypes
   | ListDetailsActionTypes
-  | SearchActionTypes;
+  | SearchActionTypes
+  | ProfileActionTypes;
