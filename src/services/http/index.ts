@@ -87,7 +87,8 @@ class HttpService {
     return this.fetchData<string>(
       urls.deleteList(TEST_USER_ID, id),
       "patch",
-      null
+      null,
+      {}
     );
   };
   getListsDetails = (listId: string) => {

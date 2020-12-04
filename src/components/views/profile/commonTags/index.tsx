@@ -3,124 +3,11 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "tippy.js/animations/scale.css";
 
-import ReactWordcloud, { OptionsProp } from "react-wordcloud";
+import ReactWordcloud, { OptionsProp, Word } from "react-wordcloud";
 
 import React from "react";
-
-const words = [
-  {
-    text: "@told",
-    value: 64,
-  },
-  {
-    text: "@mistake",
-    value: 11,
-  },
-  {
-    text: "@thought",
-    value: 16,
-  },
-  {
-    text: "@bad",
-    value: 17,
-  },
-  {
-    text: "@mtetestst",
-    value: 11,
-  },
-  {
-    text: "@city",
-    value: 16,
-  },
-  {
-    text: "@Ukraine",
-    value: 98,
-  },
-  {
-    text: "@told",
-    value: 64,
-  },
-  {
-    text: "@mistake",
-    value: 11,
-  },
-  {
-    text: "@thought",
-    value: 16,
-  },
-  {
-    text: "@bad",
-    value: 27,
-  },
-  {
-    text: "@mtetestst",
-    value: 14,
-  },
-  {
-    text: "@city",
-    value: 20,
-  },
-  {
-    text: "@Kremenchuk",
-    value: 98,
-  },
-  {
-    text: "@told",
-    value: 64,
-  },
-  {
-    text: "@mistake",
-    value: 11,
-  },
-  {
-    text: "@thought",
-    value: 16,
-  },
-  {
-    text: "@bad",
-    value: 17,
-  },
-  {
-    text: "@mtetestst",
-    value: 11,
-  },
-  {
-    text: "@city",
-    value: 16,
-  },
-  {
-    text: "@Ukraine",
-    value: 98,
-  },
-  {
-    text: "@told",
-    value: 64,
-  },
-  {
-    text: "@mistake",
-    value: 11,
-  },
-  {
-    text: "@thought",
-    value: 16,
-  },
-  {
-    text: "@bad",
-    value: 27,
-  },
-  {
-    text: "@mtetestst",
-    value: 14,
-  },
-  {
-    text: "@city",
-    value: 20,
-  },
-  {
-    text: "@Kremenchuk",
-    value: 98,
-  },
-];
+import { TaggsType } from "../../../../services/http/types";
+import { map } from "lodash";
 
 const config: OptionsProp = {
   colors: ["#2E91BD"],
@@ -132,14 +19,28 @@ const config: OptionsProp = {
   tooltipOptions: { theme: "light" },
 };
 
-export const ProfileViewCommonTags: React.FC = () => {
+interface ProfileViewCommonTagsInterface {
+  data?: TaggsType;
+}
+
+export const ProfileViewCommonTags: React.FC<ProfileViewCommonTagsInterface> = ({
+  data,
+}) => {
+  const mappedData: Word[] = map(
+    data,
+    (value, key): Word => ({
+      text: key,
+      value: Number(value.Occurrences),
+    })
+  );
+
   return (
     <>
       <span className="ProfileViewCommonTags__small-title">
         Display of Most Common Tags
       </span>
 
-      <ReactWordcloud words={words} options={config} />
+      <ReactWordcloud words={mappedData} options={config} maxWords={40}/>
     </>
   );
 };

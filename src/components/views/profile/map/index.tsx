@@ -6,7 +6,7 @@ import {
 } from "../../../../services/http/types";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 // import classNames from "classnames";
-import { map, mapValues, split } from "lodash";
+import { map, split, values } from "lodash";
 
 import { ClassValue } from "classnames/types";
 import React from "react";
@@ -34,9 +34,6 @@ export const ProfileViewMap: React.FC<ProfileViewMapProps> = ({
     };
   };
 
-  const locationsArray: InstagramLocationsType[] = [];
-  mapValues(Locations, (e: InstagramLocationsType) => locationsArray.push(e));
-
   const center = getCoordinates(EstimatedLocation?.Coordinates);
 
   return (
@@ -53,9 +50,9 @@ export const ProfileViewMap: React.FC<ProfileViewMapProps> = ({
             zoom={10}
             center={center}
           >
-            {map(locationsArray, (e) => (
+            {map(values(Locations), (e, idx) => (
               <Marker
-                key={e.Coordinates as string}
+                key={(e.PlaceId + String(idx)) as string}
                 position={getCoordinates(e.Coordinates as string)}
                 label={e.Occurrences as string}
                 icon={e.Icon as string}

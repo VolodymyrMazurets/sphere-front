@@ -11,7 +11,7 @@ interface ProfileViewInfoProps {
   bio?: string;
   comments?: string;
   videos?: string;
-  sponsoredContent?: string;
+  DaysBetweenPost?: string;
 }
 
 export const ProfileViewInfo: React.FC<ProfileViewInfoProps> = ({
@@ -19,7 +19,7 @@ export const ProfileViewInfo: React.FC<ProfileViewInfoProps> = ({
   bio,
   comments,
   videos,
-  sponsoredContent,
+  DaysBetweenPost,
 }) => {
   return (
     <Row className={classNames("ProfileViewInfo", className)} gutter={15}>
@@ -32,9 +32,9 @@ export const ProfileViewInfo: React.FC<ProfileViewInfoProps> = ({
       <Col>
         <div className="ProfileViewInfo__card _mb">
           <span className="ProfileViewInfo__small-title">
-            % of Sponsored Content
+            Days Between Post
           </span>
-          <h4 className="ProfileViewInfo__value">{sponsoredContent}%</h4>
+          <h4 className="ProfileViewInfo__value">{DaysBetweenPost}</h4>
         </div>
         <div className="ProfileViewInfo__card _mb">
           <span className="ProfileViewInfo__small-title">

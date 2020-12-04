@@ -1,12 +1,11 @@
 import "./FavoriteView.scss";
 
-import { Button, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import React, { useEffect } from "react";
-import { map, minBy, size } from "lodash";
+import { map, minBy } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CustomIcon } from "../../components";
-import { DownOutlined } from "@ant-design/icons";
 import { RootState } from "../../store/types";
 import { TheCard } from "../../components/common";
 import { listDetailsActions } from "../../store/modules/listDetails";
@@ -61,22 +60,6 @@ export const FavoriteView: React.FC = () => {
           );
         })}
       </Row>
-      {size(listDetails.Influencers) > 6 && (
-        <Row justify="center">
-          <Button
-            className="FavoriteView__btn"
-            type="primary"
-            shape="round"
-            size="large"
-          >
-            Load more
-            <DownOutlined
-              className="FavoriteView__icon"
-              style={{ marginLeft: 24 }}
-            />
-          </Button>
-        </Row>
-      )}
     </div>
   );
 };

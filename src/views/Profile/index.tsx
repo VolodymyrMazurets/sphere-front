@@ -57,8 +57,8 @@ export const ProfileView: React.FC = () => {
             bio={profile?.Instagram?.Profile?.Bio}
             comments={profile?.Instagram?.EngagementMetrics?.AverageComments}
             videos={profile?.Instagram?.EngagementMetrics?.MaxVideoViews}
-            sponsoredContent={
-              profile?.Instagram?.EngagementMetrics?.AverageEngagementLikes
+            DaysBetweenPost={
+              profile?.Instagram?.EngagementMetrics?.DaysBetweenPost
             }
             className="ProfileView__info"
           />
@@ -81,7 +81,7 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 300 }}
               >
-                <ProfileViewCommonTags />
+                <ProfileViewCommonTags data={profile?.Instagram?.TaggedUsers} />
               </div>
             </Col>
           </Row>
@@ -93,7 +93,9 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewFolowersChart />
+                <ProfileViewFolowersChart
+                  data={profile?.Instagram?.Historical}
+                />
               </div>
             </Col>
             <Col span={8}>
@@ -101,7 +103,9 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewEngagementChart />
+                <ProfileViewEngagementChart
+                  data={profile?.Instagram?.Historical}
+                />
               </div>
             </Col>
             <Col span={8}>
@@ -109,7 +113,7 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewHashTags />
+                <ProfileViewHashTags data={profile?.Instagram?.Hashtags} />
               </div>
             </Col>
           </Row>
@@ -121,7 +125,7 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewVideosChart />
+                <ProfileViewVideosChart data={profile?.Instagram?.Historical} />
               </div>
             </Col>
             <Col span={8}>
@@ -129,7 +133,9 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewCommentsChart />
+                <ProfileViewCommentsChart
+                  data={profile?.Instagram?.Historical}
+                />
               </div>
             </Col>
             <Col span={8}>
@@ -137,7 +143,7 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewEmojisChart />
+                <ProfileViewEmojisChart data={profile?.Instagram?.Emojis} />
               </div>
             </Col>
           </Row>

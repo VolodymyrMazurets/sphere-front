@@ -3,6 +3,7 @@ import "./ProfileViewEmojisChart.scss";
 import React, { useEffect, useState } from "react";
 import { TheBarChart, TheRadioGroup } from "../../../common";
 
+import { InstagramEmojisType } from "../../../../services/http/types";
 import { RadioChangeEvent } from "antd/lib/radio";
 import { shuffle } from "lodash";
 
@@ -11,7 +12,7 @@ interface Data {
   emojis: number;
 }
 
-const data: Data[] = [
+const dataTest: Data[] = [
   {
     name: "2010",
     emojis: 20,
@@ -38,17 +39,25 @@ const data: Data[] = [
   },
 ];
 
-export const ProfileViewEmojisChart: React.FC = () => {
+interface ProfileViewEmojisChartProps {
+  data?: InstagramEmojisType;
+}
+
+export const ProfileViewEmojisChart: React.FC<ProfileViewEmojisChartProps> = ({
+  data,
+}) => {
   const [time, setTime] = useState("1");
   const [chartData, setChartData] = useState<Data[]>([]);
+
+  console.log(data)
 
   useEffect(() => {
     switch (time) {
       case "1":
-        setChartData(data);
+        setChartData(dataTest);
         break;
       default:
-        setChartData(shuffle(data));
+        setChartData(shuffle(dataTest));
     }
   }, [time]);
 

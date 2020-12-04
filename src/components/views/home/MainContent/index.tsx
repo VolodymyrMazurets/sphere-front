@@ -4,8 +4,10 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { notes } from "../../../../assets/libs/notes";
+import { random } from "lodash";
 import { searchModalActions } from "../../../../store/modules/searchModal";
-import { sphereInit } from "../../../../assets/js/three_sphere";
+import { sphereInit } from "../../../../assets/libs/three_sphere";
 import { useDispatch } from "react-redux";
 
 const sphereBlock = () => {
@@ -17,14 +19,12 @@ const sphereBlock = () => {
 };
 
 const quotesBlock = () => {
+  const randomText = notes[random(0, notes.length)];
   return (
     <div className="HomeMainContent__quotes-block">
       <div className="HomeMainContent__label">Quotes of the day</div>
-      <p className="HomeMainContent__quote">
-        “You’re off to great places, today is your day. Your mountain is
-        waiting, so get on your way.”
-      </p>
-      <span className="HomeMainContent__author">Dr. Seuss</span>
+      <p className="HomeMainContent__quote">{randomText.text}</p>
+      <span className="HomeMainContent__author"> {randomText.author}</span>
     </div>
   );
 };

@@ -8,31 +8,32 @@ import {
   YAxis,
 } from "recharts";
 
+import { IntagramHistoricalType } from "../../../../services/http/types";
 import React from "react";
 
-interface TheLineChartEngagementDataObject {
+export interface TheLineChartEngagementDataObject {
   name: string;
   engagement: number;
 }
-interface TheLineChartFolowersDataObject {
+export interface TheLineChartFolowersDataObject {
   name: string;
   followers: number;
 }
-interface TheLineChartVideosDataObject {
+export interface TheLineChartVideosDataObject {
   name: string;
   videos: number;
 }
-interface TheLineChartComentsDataObject {
+export interface TheLineChartComentsDataObject {
   name: string;
   comments: number;
 }
 
 interface TheLineChartProps {
   data:
-    | TheLineChartEngagementDataObject[]
-    | TheLineChartFolowersDataObject[]
-    | TheLineChartVideosDataObject[]
-    | TheLineChartComentsDataObject[];
+    | (IntagramHistoricalType | TheLineChartEngagementDataObject)[]
+    | (IntagramHistoricalType | TheLineChartFolowersDataObject)[]
+    | (IntagramHistoricalType | TheLineChartVideosDataObject)[]
+    | (IntagramHistoricalType | TheLineChartComentsDataObject)[];
   dataKey: string;
 }
 

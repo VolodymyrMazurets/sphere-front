@@ -4,6 +4,12 @@ export const sphereInit = function init() {
   const radius = 20;
   const scene = new THREE.Scene();
   let phase = 0;
+  const container = document?.getElementById("canvas");
+
+  const width = () =>
+    window.innerWidth > 1400
+      ? container.clientWidth - 150
+      : container.clientWidth - 150;
 
   const camera = new THREE.PerspectiveCamera(
     95,
@@ -13,10 +19,9 @@ export const sphereInit = function init() {
   );
   camera.position.z = 30;
 
-  const container = document.getElementById("canvas");
-
   const renderer = new THREE.WebGLRenderer({ alpha: true });
-  renderer.setSize(container.clientWidth - 150, container.clientHeight);
+
+  renderer.setSize(width(), container.clientHeight);
   container.appendChild(renderer.domElement);
 
   const boxSize = 0.2;
@@ -42,7 +47,7 @@ export const sphereInit = function init() {
       parentContainer.add(particle);
 
       const dest = new THREE.Vector3();
-      dest.z = Math.sin(pitch) * Math.cos(elevation) * radius; 
+      dest.z = Math.sin(pitch) * Math.cos(elevation) * radius;
       dest.x = Math.cos(pitch) * Math.cos(elevation) * radius;
       dest.y = Math.sin(elevation) * radius;
       particle.userData = {

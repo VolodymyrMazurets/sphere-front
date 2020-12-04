@@ -45,11 +45,7 @@ export interface ProfileResponceType {
   MonaMetrics?: {};
   Id?: string;
   Instagram?: {
-    TaggedUsers?: {
-      [key: string]: {
-        Occurrences?: string;
-      };
-    };
+    TaggedUsers?: TaggsType;
     AccessCaptions?: {
       [key: string]: {
         Occurrences?: string;
@@ -79,19 +75,10 @@ export interface ProfileResponceType {
     Metadata?: {
       ProfilePictureURL?: string;
     };
-    Hashtags?: {
-      [key: string]: {
-        Occurrences?: string;
-      };
-    };
+    Hashtags?: TaggsType;
     Profile?: ListDetailsInfluencersResponseType;
-    Historical?: [];
-    Emojis?: {
-      [key: string]: {
-        Occurrences?: string;
-        EmojiShort?: string;
-      };
-    };
+    Historical?: IntagramHistoricalType[];
+    Emojis?: InstagramEmojisType;
   };
   EstimatedLocation?: EstimatedLocationType;
 }
@@ -121,6 +108,39 @@ export interface InstagramLocationsType {
     Latitude?: string;
     Icon?: string;
     Longitude?: string;
+  };
+}
+
+export interface TaggsType {
+  [key: string]: {
+    Occurrences?: string;
+  };
+}
+
+export interface IntagramHistoricalType {
+  AverageComments?: string;
+  AverageEngagementLikes?: string;
+  AverageEngagementLikesComments?: string;
+  AverageLikes?: string;
+  AverageVideoViews?: string;
+  Bio?: string;
+  BusinessCategory?: string;
+  DaysBetweenPost?: string;
+  Email?: string;
+  Engagement?: string;
+  Followers?: string;
+  Following?: string;
+  LastUpdated?: string;
+  MaxComments?: string;
+  MaxLikes?: string;
+  MaxVideoViews?: string;
+  NumPosts?: string;
+}
+
+export interface InstagramEmojisType {
+  [key: string]: {
+    Occurrences?: string;
+    EmojiShort?: string;
   };
 }
 
