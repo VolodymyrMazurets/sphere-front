@@ -42,7 +42,6 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
         <Button
           className="TheMenu__btn-search"
           type="primary"
-          shape="round"
           icon={<SearchOutlined />}
           size="large"
           onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}

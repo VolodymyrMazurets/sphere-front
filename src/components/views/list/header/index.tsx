@@ -89,6 +89,7 @@ export const ListViewHeader: React.FC<ListViewHeaderProps> = ({
     <Row
       className={classNames("ListViewHeader", className)}
       justify="space-between"
+      align="middle"
     >
       <h1 className="ListViewHeader__title">User Influencer List</h1>
       <Row align="middle" gutter={30}>

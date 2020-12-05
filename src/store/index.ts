@@ -8,6 +8,7 @@ import { profileReducer } from "./modules/profile";
 import { searchModalReducer } from "./modules/searchModal";
 import { searchReducer } from "./modules/search";
 import thunk from "redux-thunk";
+import { topicsReducer } from "./modules/topics";
 
 export const rootReducer = combineReducers({
   listState: listReducer,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
   searchState: searchReducer,
   profileState: profileReducer,
   searchModalState: searchModalReducer,
+  topicsState: topicsReducer,
 });
 
 export const store = configureStore({

@@ -29,6 +29,7 @@ const initialSearchState: SearchPayloadType = {
   Verified: true,
   HasEmail: true,
   Page: 1,
+  Language: "en",
 };
 
 export const SearchModalContent: React.FC = () => {
@@ -153,23 +154,23 @@ export const SearchModalContent: React.FC = () => {
                 className="SearchModalContent__input"
               />
             </Col>
-            {/* <Col span={8}>
+            <Col span={8}>
               <span className="SearchModalContent__label">
                 Minimum Engagement%
               </span>
               <InputNumber
-                onChange={(e) => onInputTypeNumberChange(e, "MaxFollowers")}
+                onChange={(e) => onInputTypeNumberChange(e, "MinEngagement")}
                 placeholder="Ex 1.5%"
                 className="SearchModalContent__input"
               />
-            </Col> */}
+            </Col>
           </Row>
         </Col>
         <Col span={24} className="SearchModalContent__col">
           <Row gutter={20}>
             <Col span={8}>
               <span className="SearchModalContent__label">
-                Minimum Avg.Views
+                Minimum Avg. Views
               </span>
               <InputNumber
                 onChange={(e) => onInputTypeNumberChange(e, "MinAvgViews")}
@@ -179,7 +180,7 @@ export const SearchModalContent: React.FC = () => {
             </Col>
             <Col span={8}>
               <span className="SearchModalContent__label">
-                Minimum Average Comments
+                Minimum Avg. Comments
               </span>
               <InputNumber
                 onChange={(e) => onInputTypeNumberChange(e, "MinAvgComments")}
@@ -206,21 +207,28 @@ export const SearchModalContent: React.FC = () => {
                 </Radio>
               </Radio.Group>
             </Col>
-            {/* <Col span={8}>
-              <span className="SearchModalContent__label">Has Video?</span>
+            <Col span={8}>
+              <span className="SearchModalContent__label">Language</span>
               <Radio.Group
-                value={radios.second}
-                onChange={(e) => onRadiosChange(e, "second")}
+                value={formData.Language}
+                onChange={(e) =>
+                  setFormData((prevState) => {
+                    return {
+                      ...prevState,
+                      Language: e.target.value,
+                    };
+                  })
+                }
                 className="SearchModalContent__radio-group"
               >
-                <Radio className="SearchModalContent__radio-btn" value={1}>
-                  Yes
+                <Radio className="SearchModalContent__radio-btn" value="en">
+                  EN
                 </Radio>
-                <Radio className="SearchModalContent__radio-btn" value={0}>
-                  No
+                <Radio className="SearchModalContent__radio-btn" value="es">
+                  SP
                 </Radio>
               </Radio.Group>
-            </Col> */}
+            </Col>
             <Col span={8}>
               <span className="SearchModalContent__label">Verified</span>
               <Radio.Group

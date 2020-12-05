@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import {
   ProfileViewCommentsChart,
   ProfileViewCommonTags,
-  ProfileViewEmojisChart,
+  ProfileViewEmojisTags,
   ProfileViewEngagementChart,
   ProfileViewFolowersChart,
   ProfileViewHashTags,
@@ -143,7 +143,7 @@ export const ProfileView: React.FC = () => {
                 className="ProfileView__block _mb-less"
                 style={{ height: 355 }}
               >
-                <ProfileViewEmojisChart data={profile?.Instagram?.Emojis} />
+                <ProfileViewEmojisTags data={profile?.Instagram?.Emojis} />
               </div>
             </Col>
           </Row>

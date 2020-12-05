@@ -19,7 +19,7 @@ const sphereBlock = () => {
 };
 
 const quotesBlock = () => {
-  const randomText = notes[random(0, notes.length)];
+  const randomText = notes[random(0, notes.length - 1)];
   return (
     <div className="HomeMainContent__quotes-block">
       <div className="HomeMainContent__label">Quotes of the day</div>
@@ -34,7 +34,7 @@ export const HomeMainContent: React.FC = () => {
 
   useEffect(() => {
     sphereInit();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="HomeMainContent">
@@ -42,7 +42,6 @@ export const HomeMainContent: React.FC = () => {
       <Button
         className="HomeMainContent__btn"
         type="primary"
-        shape="round"
         icon={<SearchOutlined />}
         size="large"
         onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}

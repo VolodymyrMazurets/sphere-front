@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "antd/lib/avatar/avatar";
 import { CustomIcon } from "../../CustomIcon";
 import { ListDetailsInfluencersResponseType } from "../../../services/http/types";
+import NumericLabel from "react-pretty-numbers";
 import React from "react";
 import { RootState } from "../../../store/types";
 import classNames from "classnames";
@@ -20,6 +21,14 @@ interface TheCardProps {
   className?: string;
   data: ListDetailsInfluencersResponseType;
 }
+
+const option = {
+  justification: "L",
+  shortFormat: true,
+  shortFormatMinValue: 1000,
+  shortFormatPrecision: 1,
+  title: true,
+};
 
 export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
   const dispatch = useDispatch();
@@ -99,15 +108,24 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
         <Col span={24}>
           <Row align="middle" style={{ marginBottom: 32, width: "100%" }}>
             <Col span={8}>
-              <h2 className="TheCard__value">{data?.NumPosts}</h2>
+              <h2 className="TheCard__value">
+                <NumericLabel params={option}>{data?.NumPosts}</NumericLabel>
+              </h2>
               <p className="TheCard__value-name">Posts</p>
             </Col>
             <Col span={8}>
-              <h2 className="TheCard__value">{data?.Followers}</h2>
+              <h2 className="TheCard__value">
+                <NumericLabel params={option}>{data?.Followers}</NumericLabel>
+              </h2>
               <p className="TheCard__value-name">Followers</p>
             </Col>
             <Col span={8}>
-              <h2 className="TheCard__value">{data?.Engagement}%</h2>
+              <h2 className="TheCard__value">
+                <NumericLabel params={{ justification: 'L', precision: 2 }}>
+                  {data?.Engagement}
+                </NumericLabel>
+                %
+              </h2>
               <p className="TheCard__value-name">Engagement</p>
             </Col>
           </Row>

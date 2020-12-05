@@ -24,7 +24,7 @@
     position: relative;
   }
   &__quotes-block {
-    padding: 30px;
+    padding: 24px 30px;
     @include flex(center, center, column);
     position: relative;
     &:before {
@@ -40,7 +40,7 @@
     background-color: rgba($V1, 0.1);
     border-radius: 40px;
     @include text($H12, 500, $V1);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     z-index: 1;
   }
   &__quote {
@@ -48,7 +48,7 @@
     max-width: 580px;
     text-align: center;
     line-height: 30px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     z-index: 1;
   }
   &__author {
@@ -61,11 +61,14 @@
     margin-bottom: 20px;
     background: #ffffff;
     box-shadow: 0px 15px 40px rgba(110, 123, 149, 0.06);
-    border-radius: 40px;
     border-color: transparent;
     @include text($H13, 500, $R1);
     text-shadow: none;
     height: 50px;
+    &:hover,
+    &:active {
+      background: rgba($V2, 0.1);
+    }
   }
   &__sphere {
       width: 100%;

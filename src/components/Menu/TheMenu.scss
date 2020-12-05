@@ -35,15 +35,14 @@
   }
   & &__btn-search {
     width: 202px;
-    background: rgba($V2, 0.1);
+    background: $N0;
     border: none;
     box-shadow: none;
-    @include text($H13, 500, rgba($N2, 0.4));
+    @include text($H13, 500, $R2);
     text-shadow: none;
     margin-bottom: 30px;
     &:hover,
-    &:active,
-    &:focus {
+    &:activeç {
       background: rgba($V2, 0.1);
     }
   }

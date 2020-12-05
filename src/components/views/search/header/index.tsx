@@ -31,9 +31,9 @@ export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
             className="SearchViewHeader__select-box"
           >
             <Option value="1">Followers High to Low</Option>
-            <Option value="2">Followers Low to Hight</Option>
-            <Option value="3">Engagement Low to Hight</Option>
-            <Option value="4">Engagement Low to Hight</Option>
+            <Option value="2">Followers Low to High</Option>
+            <Option value="3">Engagement High to Low</Option>
+            <Option value="4">Engagement Low to High</Option>
           </Select>
         </div>
         <Button

@@ -22,7 +22,6 @@ export const ListView: React.FC = () => {
       dispatch(listActions["LIST_REQUEST"]());
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (

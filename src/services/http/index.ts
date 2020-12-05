@@ -5,6 +5,7 @@ import {
   ListDetailsResponseType,
   ProfileResponceType,
   SearchPayloadType,
+  TopicsResponseType,
 } from "./types";
 import axios, { Method } from "axios";
 
@@ -14,6 +15,7 @@ export const BASE_URL =
   "https://gpzz9e6vz8.execute-api.us-east-1.amazonaws.com/prod";
 
 export const TEST_USER_ID: string = "a4f5708f-ac6d-497d-b647-a4f9315490db";
+export const TOPICS_API_KEY: string = "164c387dbc1c4a349ef3467a08956d87";
 
 export const urls = {
   list: (userID: string) => `${BASE_URL}/influencerlist/${userID}/`,
@@ -29,6 +31,8 @@ export const urls = {
     `${BASE_URL}/modifyinfluencerlist/${userID}/${listId}`,
   profile: (influencerID: string) =>
     `${BASE_URL}/influencerprofile/${influencerID}/`,
+  topics: (query: string) =>
+    `https://newsapi.org/v2/everything?q=${query}&apiKey=${TOPICS_API_KEY}`,
 };
 
 class HttpService {
@@ -106,6 +110,9 @@ class HttpService {
   };
   getProfile = (influencerID: string) => {
     return this.fetchData<ProfileResponceType>(urls.profile(influencerID));
+  };
+  getTopics = (query: string) => {
+    return this.fetchData<TopicsResponseType>(urls.topics(query));
   };
 }
 

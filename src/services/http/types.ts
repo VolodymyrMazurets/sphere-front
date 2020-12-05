@@ -144,6 +144,29 @@ export interface InstagramEmojisType {
   };
 }
 
+export interface TopicsResponseType {
+  status?: string;
+  totalResults?: number;
+  articles?: ArticleResponseType[];
+  message?: string;
+}
+
+export interface ArticleResponseType {
+  source?: {
+    id?: null | string | number;
+    name?: string;
+  };
+  author?: string;
+  title?: string;
+  description?: string;
+  url?: string;
+  urlToImage?: string;
+  publishedAt?: Date;
+  content?: string;
+}
+
+// Payload types
+
 export interface SearchPayloadType {
   SearchString?: string;
   LocationViewport?: {
@@ -160,6 +183,8 @@ export interface SearchPayloadType {
   Verified?: boolean;
   HasEmail?: boolean;
   Page?: number;
+  MinEngagement?: number;
+  Language?: 'en' | 'es';
 }
 
 export interface CreateListPayloadType {

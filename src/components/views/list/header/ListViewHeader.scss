@@ -1,6 +1,9 @@
 @import "../../../../scss/core.scss";
 .ListViewHeader {
   padding-bottom: 38px;
+  &__title {
+    @include text($H20, 600, $N1);
+  }
   &__popover {
     width: 600px;
   }

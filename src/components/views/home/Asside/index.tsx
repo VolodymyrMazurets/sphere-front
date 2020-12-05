@@ -1,37 +1,53 @@
 import "./HomeAsside.scss";
 
 import { Col, Row } from "antd";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "antd/lib/avatar/avatar";
-import React from "react";
+import { RootState } from "../../../../store/types";
 import { UserOutlined } from "@ant-design/icons";
+import { format } from "date-fns";
+import { map } from "lodash";
+import { topicsActions } from "../../../../store/modules/topics";
 
 export const HomeAsside: React.FC = () => {
+  const dispatch = useDispatch();
+  const { topics } = useSelector(({ topicsState }: RootState) => topicsState);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch(topicsActions["TOPICS_REQUEST"]("influencers marketing"));
+    };
+    fetchData();
+  }, [dispatch]);
+
   return (
     <div className="HomeAsside">
       <h2 className="HomeAsside__title">News Feed</h2>
       <ul className="HomeAsside__list">
-        {[1, 2, 3, 4, 5, 6].map((e) => {
+        {map(topics?.articles, (e, idx) => {
           return (
-            <li className="HomeAsside__item" key={e}>
-              <Row style={{ marginBottom: 16 }}>
+            <li className="HomeAsside__item" key={e.content} onClick={() => window.open(e.url, "_blank")}>
+              <Row
+                style={{ marginBottom: 16 }}
+                
+              >
                 <Col style={{ marginRight: 16 }}>
                   <Avatar
                     size={40}
                     icon={<UserOutlined />}
-                    src={`https://i.pravatar.cc/80?img=${e}`}
+                    src={`https://i.pravatar.cc/80?img=${idx + 1}`}
                   />
                 </Col>
                 <Col>
-                  <h6 className="HomeAsside__name">Ruben Venrovs</h6>
-                  <p className="HomeAsside__date">{e} hours ago</p>
+                  <h6 className="HomeAsside__name">{e.author}</h6>
+                  <p className="HomeAsside__date">
+                    {format(new Date(`${e.publishedAt}`), "PP")}
+                  </p>
                 </Col>
               </Row>
-              <p className="HomeAsside__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Faucibus sit magna tincidunt viverra ullamcorper sit natoque. At
-                sagittis,
-              </p>
+              <p className="HomeAsside__text">{e.description}</p>
             </li>
           );
         })}
