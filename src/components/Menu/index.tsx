@@ -65,14 +65,14 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
               </Link>
             </Tooltip>
           </li>
-          <li className="TheMenu__item">
+          {/* <li className="TheMenu__item">
             <Tooltip placement="right" title="Help">
               <Link to="/help">
                 <CustomIcon icon="help" className="TheMenu__icon" />
                 Help
               </Link>
             </Tooltip>
-          </li>
+          </li> */}
         </ul>{" "}
       </>
     );
@@ -108,13 +108,13 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
             </Link>
           </Tooltip>
         </li>
-        <li className="TheMenu__expanded-item">
+        {/* <li className="TheMenu__expanded-item">
           <Tooltip placement="right" title="Help">
             <Link to="/help" className="TheMenu__expanded-link _small">
               <CustomIcon icon="help" />
             </Link>
           </Tooltip>
-        </li>
+        </li> */}
       </ul>
     );
   };
