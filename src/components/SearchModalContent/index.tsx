@@ -26,8 +26,8 @@ const initialSearchState: SearchPayloadType = {
   SortOrder: "DESC",
   MinAvgViews: 1,
   MinAvgComments: 1,
-  Verified: true,
-  HasEmail: true,
+  Verified: null,
+  HasEmail: null,
   Page: 1,
   Language: "en",
 };
@@ -94,7 +94,8 @@ export const SearchModalContent: React.FC = () => {
     });
   };
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (e: React.FormEvent) => {
+    e.preventDefault();
     dispatch(searchActions["SEARCH_CLEAR"]());
     await dispatch(searchActions["SEARCH_REQUEST"]({ ...formData }));
     push("/result");
@@ -104,7 +105,7 @@ export const SearchModalContent: React.FC = () => {
   // const onPlacesChanged = () => console.log(searchBox?.getPlaces());
 
   return (
-    <div className="SearchModalContent">
+    <form className="SearchModalContent" onSubmit={(e) => handleButtonClick(e)}>
       <h2 className="SearchModalContent__title">Search By</h2>
       <Row>
         <Col span={24} className="SearchModalContent__col">
@@ -119,7 +120,7 @@ export const SearchModalContent: React.FC = () => {
         </Col>
         <Col span={24} className="SearchModalContent__col">
           <span className="SearchModalContent__label">
-            By Location (Using Google Places Autocomplete API)
+            By Location (Using Places Autocomplete)
           </span>
           {/* <Input
             disabled
@@ -249,6 +250,7 @@ export const SearchModalContent: React.FC = () => {
         <Col span={24}>
           <TheButton
             loading={loading}
+            isForm
             label="Search Now"
             className="SearchModalContent__btn"
             type="danger"
@@ -258,6 +260,6 @@ export const SearchModalContent: React.FC = () => {
           />
         </Col>
       </Row>
-    </div>
+    </form>
   );
 };

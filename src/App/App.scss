@@ -77,6 +77,7 @@ ul {
     z-index: 1;
     @include flex(stretch, stretch);
     flex: 1;
+    padding-right: 55px;
     &._more-padding {
       padding-right: 55px;
     }
@@ -105,4 +106,7 @@ ul {
       }
     }
   }
+}
+.ant-avatar {
+  background-color: $R2!important;
 }

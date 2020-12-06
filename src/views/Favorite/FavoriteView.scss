@@ -44,9 +44,8 @@
   &__head-arrow {
     transform: rotate(180deg);
     @include flex(center, center);
-    color: $N2;
-    svg {
-      height: 20px !important;
-    }
+    color: $N1;
+    height: 30px;
+    border-left-color: $N2;
   }
 }

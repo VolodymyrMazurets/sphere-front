@@ -85,15 +85,19 @@ export const ResultView: React.FC = () => {
   return (
     <div className="ResultView">
       <SearchViewHeader onChange={(e) => handleFilter(e)} />
-      <Row gutter={[30, 30]}>
-        {map(searchResult, (e) => {
-          return (
-            <Col key={e.InfluencerId} span={8}>
-              <TheCard data={e} />
-            </Col>
-          );
-        })}
-      </Row>
+      {searchResult?.length ? (
+        <Row gutter={[30, 30]}>
+          {map(searchResult, (e) => {
+            return (
+              <Col key={e.InfluencerId} span={8}>
+                <TheCard data={e} />
+              </Col>
+            );
+          })}
+        </Row>
+      ) : (
+        <h1 className="ResultView__empty">No influencers found</h1>
+      )}
       <Row justify="center">
         {size(searchResult) > 8 && (
           <Button

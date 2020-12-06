@@ -1,11 +1,10 @@
 import "./FavoriteView.scss";
 
-import { Col, Row } from "antd";
+import { Col, Divider, Row } from "antd";
 import React, { useEffect } from "react";
 import { map, minBy } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CustomIcon } from "../../components";
 import { RootState } from "../../store/types";
 import { TheCard } from "../../components/common";
 import { listDetailsActions } from "../../store/modules/listDetails";
@@ -19,7 +18,7 @@ export const FavoriteView: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(listDetailsActions["LIST_DETAILS_REQUEST"]('0'));
+      dispatch(listDetailsActions["LIST_DETAILS_REQUEST"]("0"));
     };
     fetchData();
   }, [dispatch]);
@@ -30,17 +29,15 @@ export const FavoriteView: React.FC = () => {
         <h4 style={{ paddingRight: 10 }} className="FavoriteView__head-value">
           {listDetails.ListName}
         </h4>
-        <CustomIcon
-          style={{ fontSize: 70, height: 20 }}
-          icon="long-arrow"
+        <Divider
+          type="vertical"
           className="FavoriteView__head-arrow"
         />
         <h4 style={{ paddingRight: 10 }} className="FavoriteView__head-value">
           {listDetails.ListNotes}
         </h4>
-        <CustomIcon
-          style={{ fontSize: 70, height: 20 }}
-          icon="long-arrow"
+        <Divider
+          type="vertical"
           className="FavoriteView__head-arrow"
         />
         <h4 style={{ paddingLeft: 10 }} className="FavoriteView__head-value">

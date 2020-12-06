@@ -44,7 +44,7 @@ export const ProfileViewMap: React.FC<ProfileViewMapProps> = ({
       <div style={{ borderRadius: 20, overflow: "hidden" }}>
         {EstimatedLocation && Locations && (
           <GoogleMap
-            options={{ disableDefaultUI: true }}
+            options={{ disableDefaultUI: true, fullscreenControl: true }}
             id="marker-example"
             mapContainerStyle={mapContainerStyle}
             zoom={10}

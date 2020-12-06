@@ -16,17 +16,27 @@
     }
     &:last-child {
       margin-right: 0;
+      &:hover {
+        background-color: $N0;
+      }
+    }
+    &:hover {
+      background-color: rgba($V2, 0.1);
     }
   }
   &__item {
-    @include text($H14, 500, $N1);
+    @include text($H16, 500, $N1);
     margin-bottom: 30px;
+    &:hover {
+      color: $R2;
+    }
     &:last-child {
       margin-bottom: 0;
     }
     a {
         color: inherit;
         @include flex(flex-start, center);
+        @include transition(color);
     }
   }
   &__icon {
@@ -42,7 +52,7 @@
     text-shadow: none;
     margin-bottom: 30px;
     &:hover,
-    &:activeç {
+    &:active {
       background: rgba($V2, 0.1);
     }
   }

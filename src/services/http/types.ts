@@ -145,24 +145,20 @@ export interface InstagramEmojisType {
 }
 
 export interface TopicsResponseType {
-  status?: string;
-  totalResults?: number;
-  articles?: ArticleResponseType[];
-  message?: string;
+  value?: ArticleResponseType[];
 }
 
 export interface ArticleResponseType {
-  source?: {
-    id?: null | string | number;
-    name?: string;
+  id: string;
+  title: string;
+  url: string;
+  description: string;
+  body: string;
+  datePublished: string;
+  webpageUrl: string;
+  provider: {
+    name: string;
   };
-  author?: string;
-  title?: string;
-  description?: string;
-  url?: string;
-  urlToImage?: string;
-  publishedAt?: Date;
-  content?: string;
 }
 
 // Payload types
@@ -180,11 +176,11 @@ export interface SearchPayloadType {
   SortOrder?: "ASC" | "DESC";
   MinAvgViews?: number;
   MinAvgComments?: number;
-  Verified?: boolean;
-  HasEmail?: boolean;
+  Verified?: boolean | null;
+  HasEmail?: boolean | null;
   Page?: number;
   MinEngagement?: number;
-  Language?: 'en' | 'es';
+  Language?: "en" | "es";
 }
 
 export interface CreateListPayloadType {

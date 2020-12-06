@@ -26,13 +26,14 @@ export const HomeAsside: React.FC = () => {
     <div className="HomeAsside">
       <h2 className="HomeAsside__title">News Feed</h2>
       <ul className="HomeAsside__list">
-        {map(topics?.articles, (e, idx) => {
+        {map(topics?.value, (e, idx) => {
           return (
-            <li className="HomeAsside__item" key={e.content} onClick={() => window.open(e.url, "_blank")}>
-              <Row
-                style={{ marginBottom: 16 }}
-                
-              >
+            <li
+              className="HomeAsside__item"
+              key={e.id}
+              onClick={() => window.open(e.url, "_blank")}
+            >
+              <Row style={{ marginBottom: 16 }}>
                 <Col style={{ marginRight: 16 }}>
                   <Avatar
                     size={40}
@@ -41,9 +42,9 @@ export const HomeAsside: React.FC = () => {
                   />
                 </Col>
                 <Col>
-                  <h6 className="HomeAsside__name">{e.author}</h6>
+                  <h6 className="HomeAsside__name">{e?.provider?.name}</h6>
                   <p className="HomeAsside__date">
-                    {format(new Date(`${e.publishedAt}`), "PP")}
+                    {format(new Date(`${e?.datePublished}`), "PP")}
                   </p>
                 </Col>
               </Row>

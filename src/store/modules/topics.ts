@@ -60,12 +60,12 @@ export const topicsActions = {
   ) => {
     dispatch({ type: ActionTypes.TOPICS_REQUEST });
     const response = await httpService.getTopics(query);
-    if (response?.status === "ok") {
+    if (response) {
       dispatch({ type: ActionTypes.TOPICS_SUCCESS });
       dispatch({ type: ActionTypes.TOPICS_UPDATE, payload: response });
     } else {
       dispatch({ type: ActionTypes.TOPICS_FAILURE });
-      message.error(response?.message);
+      message.error('Something wrong with asside topics');
     }
     return response;
   },

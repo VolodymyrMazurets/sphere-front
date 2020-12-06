@@ -2,7 +2,7 @@
 .ListViewHeader {
   padding-bottom: 38px;
   &__title {
-    @include text($H20, 600, $N1);
+    @include text($H20, 600, $R2);
   }
   &__popover {
     width: 600px;

@@ -20,6 +20,7 @@ interface TheButtonProps {
   iconLeft?: boolean;
   loading?: boolean;
   disabled?: boolean;
+  isForm?: boolean;
 }
 export const TheButton: React.FC<TheButtonProps> = ({
   label,
@@ -33,9 +34,11 @@ export const TheButton: React.FC<TheButtonProps> = ({
   iconLeft,
   loading,
   disabled,
+  isForm = false,
 }) => {
   return (
     <Button
+      htmlType={isForm ? "submit" : "button"}
       type="primary"
       shape={shape}
       size="large"

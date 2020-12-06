@@ -1,8 +1,8 @@
 import "./TheMenu.scss";
 
+import { Button, Tooltip } from "antd";
 import { Link, useHistory } from "react-router-dom";
 
-import { Button } from "antd";
 import { ClassValue } from "classnames/types";
 import { CustomIcon } from "../CustomIcon";
 import React from "react";
@@ -50,22 +50,28 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
         </Button>
         <ul className="TheMenu__list">
           <li className="TheMenu__item">
-            <Link to="/list">
-              <CustomIcon icon="list" className="TheMenu__icon" />
-              Lists
-            </Link>
+            <Tooltip placement="right" title="Lists">
+              <Link to="/list">
+                <CustomIcon icon="list" className="TheMenu__icon" />
+                Lists
+              </Link>
+            </Tooltip>
           </li>
           <li className="TheMenu__item">
-            <Link to="/favorite">
-              <CustomIcon icon="favorite" className="TheMenu__icon" />
-              Favourite Influencer
-            </Link>
+            <Tooltip placement="right" title="Favourite Influencer">
+              <Link to="/favorite">
+                <CustomIcon icon="favorite" className="TheMenu__icon" />
+                Favourite Influencer
+              </Link>
+            </Tooltip>
           </li>
           <li className="TheMenu__item">
-            <Link to="/help">
-              <CustomIcon icon="help" className="TheMenu__icon" />
-              Help
-            </Link>
+            <Tooltip placement="right" title="Help">
+              <Link to="/help">
+                <CustomIcon icon="help" className="TheMenu__icon" />
+                Help
+              </Link>
+            </Tooltip>
           </li>
         </ul>{" "}
       </>
@@ -76,28 +82,38 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
     return (
       <ul className="TheMenu__expanded">
         <li className="TheMenu__expanded-item">
-          <Button
-            type="link"
-            onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
-            className="TheMenu__expanded-link"
-          >
-            <CustomIcon icon="search" />
-          </Button>
+          <Tooltip placement="right" title="Search influencer">
+            <Button
+              type="link"
+              onClick={() =>
+                dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())
+              }
+              className="TheMenu__expanded-link"
+            >
+              <CustomIcon icon="search" />
+            </Button>
+          </Tooltip>
         </li>
         <li className="TheMenu__expanded-item">
-          <Link to="/list" className="TheMenu__expanded-link _small">
-            <CustomIcon icon="list" />
-          </Link>
+          <Tooltip placement="right" title="Lists">
+            <Link to="/list" className="TheMenu__expanded-link _small">
+              <CustomIcon icon="list" />
+            </Link>
+          </Tooltip>
         </li>
         <li className="TheMenu__expanded-item">
-          <Link to="/favorite" className="TheMenu__expanded-link _small">
-            <CustomIcon icon="favorite" />
-          </Link>
+          <Tooltip placement="right" title="Favorite influencer">
+            <Link to="/favorite" className="TheMenu__expanded-link _small">
+              <CustomIcon icon="favorite" />
+            </Link>
+          </Tooltip>
         </li>
         <li className="TheMenu__expanded-item">
-          <Link to="/help" className="TheMenu__expanded-link _small">
-            <CustomIcon icon="help" />
-          </Link>
+          <Tooltip placement="right" title="Help">
+            <Link to="/help" className="TheMenu__expanded-link _small">
+              <CustomIcon icon="help" />
+            </Link>
+          </Tooltip>
         </li>
       </ul>
     );

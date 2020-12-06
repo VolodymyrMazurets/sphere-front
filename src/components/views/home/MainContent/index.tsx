@@ -1,14 +1,15 @@
 import "./HomeMainContent.scss";
 
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 
-import { Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+// import { Button } from "antd";
+// import { SearchOutlined } from "@ant-design/icons";
 import { notes } from "../../../../assets/libs/notes";
 import { random } from "lodash";
-import { searchModalActions } from "../../../../store/modules/searchModal";
+// import { searchModalActions } from "../../../../store/modules/searchModal";
 import { sphereInit } from "../../../../assets/libs/three_sphere";
-import { useDispatch } from "react-redux";
+
+// import { useDispatch } from "react-redux";
 
 const sphereBlock = () => {
   return (
@@ -29,17 +30,17 @@ const quotesBlock = () => {
   );
 };
 
-export const HomeMainContent: React.FC = () => {
-  const dispatch = useDispatch();
+export const HomeMainContent: React.FC = memo(() => {
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     sphereInit();
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="HomeMainContent">
       {sphereBlock()}
-      <Button
+      {/* <Button
         className="HomeMainContent__btn"
         type="primary"
         icon={<SearchOutlined />}
@@ -47,8 +48,8 @@ export const HomeMainContent: React.FC = () => {
         onClick={() => dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())}
       >
         Search Now
-      </Button>
+      </Button> */}
       {quotesBlock()}
     </div>
   );
-};
+});

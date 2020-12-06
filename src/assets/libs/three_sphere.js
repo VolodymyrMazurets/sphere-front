@@ -6,14 +6,9 @@ export const sphereInit = function init() {
   let phase = 0;
   const container = document?.getElementById("canvas");
 
-  const width = () =>
-    window.innerWidth > 1400
-      ? container.clientWidth - 150
-      : container.clientWidth - 150;
-
   const camera = new THREE.PerspectiveCamera(
     95,
-    window.innerWidth / window.innerHeight,
+    800/ 500,
     0.1,
     1000
   );
@@ -21,7 +16,7 @@ export const sphereInit = function init() {
 
   const renderer = new THREE.WebGLRenderer({ alpha: true });
 
-  renderer.setSize(width(), container.clientHeight);
+  renderer.setSize(800, 500);
   container.appendChild(renderer.domElement);
 
   const boxSize = 0.2;
@@ -60,10 +55,10 @@ export const sphereInit = function init() {
   window.addEventListener("resize", onWindowResize, false);
 
   function onWindowResize() {
-    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.aspect = 800 / 500;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(800, 500);
   }
 
   function render() {

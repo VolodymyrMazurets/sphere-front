@@ -5,11 +5,11 @@ import { Link, useHistory } from "react-router-dom";
 import React, { useState } from "react";
 
 import Avatar from "antd/lib/avatar/avatar";
+import { ClassValue } from "classnames/types";
 import { CustomIcon } from "../CustomIcon";
 import Logo from "../../assets/png/logo.png";
 import { UserOutlined } from "@ant-design/icons";
 import classNames from "classnames";
-import { ClassValue } from "classnames/types";
 
 interface TheHeaderProps {
   className?: ClassValue;
@@ -17,7 +17,7 @@ interface TheHeaderProps {
 }
 
 export const TheHeader: React.FC<TheHeaderProps> = ({ className, showNav }) => {
-  const [user] = useState("Rehanna");
+  const [user] = useState("Shadon");
   const { goBack, goForward } = useHistory();
   return (
     <Row justify="space-between" className={classNames("TheHeader", className)}>
@@ -49,13 +49,13 @@ export const TheHeader: React.FC<TheHeaderProps> = ({ className, showNav }) => {
       <Col>
         <Row align="middle" gutter={21}>
           <Col>
-            <h4 className="TheHeader__user-name">Hello, {user}</h4>
+            <h4 className="TheHeader__user-name">Hi, {user}</h4>
           </Col>
           <Col>
             <Avatar
               size={40}
               icon={<UserOutlined />}
-              src="https://i.pravatar.cc/80"
+              src="http://www.sphereinfluencer.com/assets/images/portraits/square/11.jpg"
             />
           </Col>
         </Row>

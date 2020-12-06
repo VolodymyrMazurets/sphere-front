@@ -31,8 +31,7 @@ export const urls = {
     `${BASE_URL}/modifyinfluencerlist/${userID}/${listId}`,
   profile: (influencerID: string) =>
     `${BASE_URL}/influencerprofile/${influencerID}/`,
-  topics: (query: string) =>
-    `https://newsapi.org/v2/everything?q=${query}&apiKey=${TOPICS_API_KEY}`,
+  topics: `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI`,
 };
 
 class HttpService {
@@ -40,7 +39,8 @@ class HttpService {
     url: string,
     method: Method = "get",
     params: object | null = null,
-    body: object | null = null
+    body: object | null = null,
+    headers?: object
   ) => {
     try {
       const { data } = await axios.request<T>({
@@ -48,6 +48,7 @@ class HttpService {
         method: method,
         data: body,
         params: params,
+        headers,
       });
       return data;
     } catch (error) {
@@ -112,7 +113,23 @@ class HttpService {
     return this.fetchData<ProfileResponceType>(urls.profile(influencerID));
   };
   getTopics = (query: string) => {
-    return this.fetchData<TopicsResponseType>(urls.topics(query));
+    return this.fetchData<TopicsResponseType>(
+      urls.topics,
+      "get",
+      {
+        pageSize: "10",
+        q: query,
+        autoCorrect: "true",
+        pageNumber: "1",
+        toPublishedDate: "null",
+        fromPublishedDate: "null",
+      },
+      null,
+      {
+        "x-rapidapi-key": "4061fb68b1mshda89bca3c51dc87p1eae66jsn7ad5c7a020a6",
+        "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+      }
+    );
   };
 }
 

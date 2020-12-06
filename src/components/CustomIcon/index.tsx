@@ -10,6 +10,7 @@ import { ReactComponent as IconFavorite } from "../../assets/svg/FavouriteInflue
 import { ReactComponent as IconHelp } from "../../assets/svg/HelpIcon.svg";
 import { ReactComponent as IconList } from "../../assets/svg/List.svg";
 import { ReactComponent as IconLocation } from "../../assets/svg/Location.svg";
+import { ReactComponent as IconLogo } from "../../assets/svg/logo.svg";
 import { ReactComponent as IconLongArrow } from "../../assets/svg/LongArrow.svg";
 import { ReactComponent as IconPen } from "../../assets/svg/pen.svg";
 import { ReactComponent as IconSearch } from "../../assets/svg/Search.svg";
@@ -38,6 +39,7 @@ export type IconTypes =
   | "long-arrow"
   | "pen"
   | "delete"
+  | "logo"
   | React.FC<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
 
 // Why to do this in typescript? Better for testing all of icons to do snapshots
@@ -56,6 +58,7 @@ export const iconsTypes: { [key: string]: IconTypes } = {
   LONG_ARROW: "long-arrow",
   PEN: "pen",
   DELETE: "delete",
+  LOGO: "logo",
 };
 
 const getName = (name?: IconTypes) => `icon-${name}`;
@@ -78,6 +81,7 @@ export const CustomIcon: React.FC<CustomIconProps> = (props) => {
     [getName("long-arrow")]: IconLongArrow,
     [getName("pen")]: IconPen,
     [getName("delete")]: IconDelete,
+    [getName("logo")]: IconLogo,
   };
 
   const IconComponent = icons[getName(icon)] || null;
