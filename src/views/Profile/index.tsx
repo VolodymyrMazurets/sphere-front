@@ -13,9 +13,10 @@ import {
   ProfileViewMap,
   ProfileViewVideosChart,
 } from "../../components/views/profile";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { ListDetailsInfluencersResponseType } from "../../services/http/types";
 import { RootState } from "../../store/types";
 import { TheLoader } from "../../components/common";
 import { listActions } from "../../store/modules/list";
@@ -27,6 +28,10 @@ export const ProfileView: React.FC = () => {
   const { profile, loading } = useSelector(
     ({ profileState }: RootState) => profileState
   );
+  const [
+    userData,
+    setUserData,
+  ] = useState<ListDetailsInfluencersResponseType>();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,6 +40,24 @@ export const ProfileView: React.FC = () => {
       dispatch(profileActions["PROFILE_REQUEST"](id));
     };
     fetchData();
+    setUserData({
+      Bio: profile.Instagram?.Profile?.Bio || null,
+      Username: profile.Instagram?.Profile?.Username || null,
+      Verified: profile.Instagram?.Profile?.Verified || null,
+      Followers: profile.Instagram?.Profile?.Followers || null,
+      FullName: profile.Instagram?.Profile?.FullName || null,
+      NumPosts: profile.Instagram?.Profile?.NumPosts || null,
+      ProfilePicture: profile.Instagram?.Metadata?.ProfilePictureURL || null,
+      Engagement:
+        Number(
+          profile.Instagram?.EngagementMetrics?.AverageEngagementLikesComments
+        ) || null,
+      EngagementNum:
+        Number(profile.Instagram?.EngagementMetrics?.Engagement) || null,
+      EstimatedLocation: profile.EstimatedLocation?.FormattedAddress || null,
+      InfluencerId: profile.Id,
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, id]);
 
   return (
@@ -46,7 +69,7 @@ export const ProfileView: React.FC = () => {
           </Col>
           <Col span={24} className="ProfileView__block">
             <ProfileViewMain
-              userData={profile?.Instagram?.Profile}
+              userData={userData}
               estimatedLocation={profile?.EstimatedLocation}
               engagement={
                 profile?.Instagram?.EngagementMetrics

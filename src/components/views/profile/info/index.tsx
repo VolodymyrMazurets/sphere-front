@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 interface ProfileViewInfoProps {
   className?: ClassValue;
-  bio?: string;
+  bio?: string | null;
   comments?: string;
   videos?: string;
   DaysBetweenPost?: string;

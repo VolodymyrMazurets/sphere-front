@@ -19,18 +19,18 @@ export interface ListDetailsResponseType {
   ListName?: string;
 }
 export interface ListDetailsInfluencersResponseType {
-  Engagement?: number;
-  Verified?: boolean;
-  Username?: string;
-  FullName?: string;
-  Bio?: string;
-  Followers: number;
-  EstimatedLocation?: string;
-  InfluencerId?: string;
-  NumPosts?: number;
+  Engagement?: number | null;
+  Verified?: boolean | null;
+  Username?: string | null;
+  FullName?: string | null;
+  Bio?: string | null;
+  Followers: number | null;
+  EstimatedLocation?: string | null;
+  InfluencerId?: string | null;
+  NumPosts?: number | null;
   ProfilePicture?: string | null;
-  EngagementNum?: number;
-  Email?: string;
+  EngagementNum?: number | null;
+  Email?: string | null;
 }
 export interface ProfileResponceType {
   Socials?: {

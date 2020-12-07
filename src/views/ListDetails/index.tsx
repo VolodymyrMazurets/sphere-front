@@ -71,7 +71,7 @@ export const ListDetailsView: React.FC = () => {
           {map(listDetails.Influencers, (influencer) => {
             return (
               <Col span={8} key={influencer.InfluencerId}>
-                <TheCard data={influencer} />
+                <TheCard data={influencer} isList />
               </Col>
             );
           })}

@@ -37,6 +37,7 @@ export enum ActionTypes {
   LIST_DETAILS_SUCCESS = "LIST_DETAILS_SUCCESS",
   LIST_DETAILS_FAILURE = "LIST_DETAILS_FAILURE",
   LIST_DETAILS_UPDATE = "LIST_DETAILS_UPDATE",
+  LIST_DETAILS_DELETE_INFLUENCER = "LIST_DETAILS_DELETE_INFLUENCER",
   // Search Store
   SEARCH_REQUEST = "SEARCH_REQUEST",
   SEARCH_SUCCESS = "SEARCH_SUCCESS",
@@ -61,7 +62,6 @@ export type ListActionTypes =
   | Action<ActionTypes.LIST_CREATE>
   | Action<ActionTypes.LIST_EDIT>
   | Action<ActionTypes.LIST_ADD_INFLUENCER>
-  | Action<ActionTypes.LIST_DELETE_INFLUENCER>
   | Action<ActionTypes.LIST_REQUEST>
   | Action<ActionTypes.LIST_SUCCESS>
   | Action<ActionTypes.LIST_FAILURE>;
@@ -70,6 +70,7 @@ export type ListDetailsActionTypes =
   | (Action<ActionTypes.LIST_DETAILS_UPDATE> & { payload: ListDetailsType })
   | Action<ActionTypes.LIST_DETAILS_REQUEST>
   | Action<ActionTypes.LIST_DETAILS_SUCCESS>
+  | Action<ActionTypes.LIST_DETAILS_DELETE_INFLUENCER>
   | Action<ActionTypes.LIST_DETAILS_FAILURE>;
 
 export type SearchActionTypes =

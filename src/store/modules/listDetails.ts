@@ -2,6 +2,7 @@ import { ActionTypes, AppThunk, ListDetailsActionTypes } from "../types";
 
 import { ListDetailsType } from "../../types/entities";
 import { httpService } from "../../services";
+import { message } from "antd";
 
 export interface ListDetailsState {
   loading: boolean;
@@ -64,6 +65,22 @@ export const listDetailsActions = {
       dispatch({ type: ActionTypes.LIST_DETAILS_UPDATE, payload: response });
     } else {
       dispatch({ type: ActionTypes.LIST_DETAILS_FAILURE });
+    }
+    return response;
+  },
+  [ActionTypes.LIST_DETAILS_DELETE_INFLUENCER]: (
+    listId: string,
+    influencerId?: string | null
+  ): AppThunk => async (dispatch) => {
+    dispatch({ type: ActionTypes.LIST_DETAILS_REQUEST });
+    const response = await httpService.deleteInfluencer(listId, influencerId);
+    if (response) {
+      dispatch({ type: ActionTypes.LIST_DETAILS_SUCCESS });
+      dispatch(listDetailsActions[ActionTypes.LIST_DETAILS_REQUEST](listId));
+      message.success("List updated successfuly");
+    } else {
+      dispatch({ type: ActionTypes.LIST_FAILURE });
+      message.error("Something wrong!");
     }
     return response;
   },

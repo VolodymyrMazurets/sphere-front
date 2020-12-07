@@ -4,6 +4,7 @@ import { Badge, Button, Col, Popover, Row, Select } from "antd";
 import { CheckCircleFilled, UserOutlined } from "@ant-design/icons";
 import { map, slice } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 
 import Avatar from "antd/lib/avatar/avatar";
 import { CustomIcon } from "../../CustomIcon";
@@ -11,15 +12,17 @@ import { ListDetailsInfluencersResponseType } from "../../../services/http/types
 import NumericLabel from "react-pretty-numbers";
 import React from "react";
 import { RootState } from "../../../store/types";
+import { TheButton } from "../buttons";
 import classNames from "classnames";
 import { listActions } from "../../../store/modules/list";
-import { useHistory } from "react-router-dom";
+import { listDetailsActions } from "../../../store/modules/listDetails";
 
 const { Option } = Select;
 
 interface TheCardProps {
   className?: string;
   data: ListDetailsInfluencersResponseType;
+  isList?: boolean;
 }
 
 const option = {
@@ -30,9 +33,14 @@ const option = {
   title: true,
 };
 
-export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
+export const TheCard: React.FC<TheCardProps> = ({
+  className,
+  data,
+  isList,
+}) => {
   const dispatch = useDispatch();
-  const { push } = useHistory();
+  const { push, location } = useHistory();
+  const { id } = useParams<{ id: string }>();
 
   const { loading, lists } = useSelector(
     ({ listState }: RootState) => listState
@@ -40,6 +48,24 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
 
   const handleFavoriteClick = () => {
     dispatch(listActions["LIST_ADD_INFLUENCER"](data, "0"));
+  };
+
+  const handleDeleteClick = () => {
+    if (location.pathname === "/favorite") {
+      dispatch(
+        listDetailsActions["LIST_DETAILS_DELETE_INFLUENCER"](
+          "0",
+          data.InfluencerId
+        )
+      );
+    } else {
+      dispatch(
+        listDetailsActions["LIST_DETAILS_DELETE_INFLUENCER"](
+          id,
+          data.InfluencerId
+        )
+      );
+    }
   };
 
   const content = (
@@ -60,49 +86,79 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
 
   return (
     <div className={classNames("TheCard", className)}>
-      <div
-        style={{ width: "100%", cursor: "pointer" }}
-        onClick={() => push(`/profile/${data?.InfluencerId}`)}
-      >
-        {data?.Verified ? (
-          <Badge
-            offset={[-12, 12]}
-            count={
-              <CheckCircleFilled
-                style={{
-                  color: "#FF8B8B",
-                  fontSize: 28,
-                  background: "#fff",
-                  borderRadius: "50%",
-                }}
+      <div style={{ width: "100%", cursor: "pointer" }}>
+        {isList && (
+          <TheButton
+            icon="delete"
+            shape="circle"
+            onClick={handleDeleteClick}
+            className="TheCard__delete"
+          />
+        )}
+        <div onClick={() => push(`/profile/${data?.InfluencerId}`)}>
+          {data?.Verified ? (
+            <Badge
+              offset={[-12, 12]}
+              count={
+                <CheckCircleFilled
+                  style={{
+                    color: "#FF8B8B",
+                    fontSize: 28,
+                    background: "#fff",
+                    borderRadius: "50%",
+                  }}
+                />
+              }
+            >
+              <Avatar
+                size={96}
+                icon={<UserOutlined />}
+                src={`https://i.pravatar.cc/80?img=${slice(
+                  data?.InfluencerId,
+                  2
+                )}`}
+                // src={data?.ProfilePicture}
+                className="TheCard__avatar"
               />
-            }
-          >
+            </Badge>
+          ) : (
             <Avatar
               size={96}
               icon={<UserOutlined />}
+              // src={data?.ProfilePicture || 'https://i.pravatar.cc/80'}
               src={`https://i.pravatar.cc/80?img=${slice(
                 data?.InfluencerId,
                 2
               )}`}
-              // src={data?.ProfilePicture}
               className="TheCard__avatar"
             />
-          </Badge>
-        ) : (
-          <Avatar
-            size={96}
-            icon={<UserOutlined />}
-            // src={data?.ProfilePicture || 'https://i.pravatar.cc/80'}
-            src={`https://i.pravatar.cc/80?img=${slice(data?.InfluencerId, 2)}`}
-            className="TheCard__avatar"
-          />
-        )}
+          )}
+        </div>
 
-        <h4 className="TheCard__title">{data?.Username}</h4>
-        <span className="TheCard__location">{data?.EstimatedLocation}</span>
-        <h6 className="TheCard__name">{data?.FullName}</h6>
-        <p className="TheCard__text">{data?.Bio}</p>
+        <h4
+          onClick={() => push(`/profile/${data?.InfluencerId}`)}
+          className="TheCard__title"
+        >
+          {data?.Username}
+        </h4>
+        <span
+          onClick={() => push(`/profile/${data?.InfluencerId}`)}
+          className="TheCard__location"
+        >
+          {data?.EstimatedLocation}
+        </span>
+        <h6
+          onClick={() => push(`/profile/${data?.InfluencerId}`)}
+          className="TheCard__name"
+        >
+          {data?.FullName}
+        </h6>
+        <p
+          onClick={() => push(`/profile/${data?.InfluencerId}`)}
+          className="TheCard__text"
+        >
+          {data?.Bio}
+        </p>
       </div>
       <Row gutter={20} style={{ width: "100%" }}>
         <Col span={24}>
@@ -121,7 +177,7 @@ export const TheCard: React.FC<TheCardProps> = ({ className, data }) => {
             </Col>
             <Col span={8}>
               <h2 className="TheCard__value">
-                <NumericLabel params={{ justification: 'L', precision: 2 }}>
+                <NumericLabel params={{ justification: "L", precision: 2 }}>
                   {data?.Engagement}
                 </NumericLabel>
                 %

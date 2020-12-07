@@ -32,6 +32,11 @@ export const urls = {
   profile: (influencerID: string) =>
     `${BASE_URL}/influencerprofile/${influencerID}/`,
   topics: `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI`,
+  deleteInfluencer: (
+    userID: string,
+    listId: string,
+    influencerId?: string | null
+  ) => `${BASE_URL}/modifyinfluencerlist/${userID}/${listId}/${influencerId}`,
 };
 
 class HttpService {
@@ -96,6 +101,14 @@ class HttpService {
       {}
     );
   };
+  deleteInfluencer = (listId: string, influencerId?: string | null) => {
+    return this.fetchData<ProfileResponceType>(
+      urls.deleteInfluencer(TEST_USER_ID, listId, influencerId),
+      "patch",
+      null,
+      {}
+    );
+  };
   getListsDetails = (listId: string) => {
     return this.fetchData<ListDetailsResponseType>(
       urls.listDetails(TEST_USER_ID, listId)
@@ -112,6 +125,7 @@ class HttpService {
   getProfile = (influencerID: string) => {
     return this.fetchData<ProfileResponceType>(urls.profile(influencerID));
   };
+
   getTopics = (query: string) => {
     return this.fetchData<TopicsResponseType>(
       urls.topics,
