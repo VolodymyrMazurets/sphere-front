@@ -25,7 +25,7 @@
     }
   }
   &__item {
-    @include text($H16, 500, $N1);
+    @include text($H18, 500, $N1);
     margin-bottom: 30px;
     &:hover {
       color: $R2;
@@ -34,14 +34,15 @@
       margin-bottom: 0;
     }
     a {
-        color: inherit;
-        @include flex(flex-start, center);
-        @include transition(color);
+      color: inherit;
+      @include flex(flex-start, center);
+      @include transition(color);
+      display: inline-flex;
     }
   }
   &__icon {
-      margin-right: 16px;
-      font-size: 24px;
+    margin-right: 16px;
+    font-size: 24px;
   }
   & &__btn-search {
     width: 202px;
@@ -59,7 +60,7 @@
   &__expanded {
     padding: 20px 0;
     &-item {
-      @include flex(center, center)
+      @include flex(center, center);
     }
     &-link {
       flex: 1;

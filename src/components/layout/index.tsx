@@ -21,7 +21,7 @@ export const MainLayout: React.FC = ({ children }) => {
 
   return (
     <>
-      <TheHeader showNav={!isNotExpandedView()} />
+      <TheHeader />
       <div
         className={classNames("App__inner", {
           _home: isNotExpandedView() && pathname === "/",
@@ -29,7 +29,7 @@ export const MainLayout: React.FC = ({ children }) => {
       >
         <Modal
           maskStyle={{
-            left: !isNotExpandedView() ? 125 : 300,
+            left: !isNotExpandedView() ? 182 : 300,
             borderRadius: "20px 0 0 20px",
             background: "#131f3873",
           }}

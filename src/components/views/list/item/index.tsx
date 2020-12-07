@@ -113,7 +113,7 @@ export const ListViewItem: React.FC<ListViewItemProps> = ({
           </p>
         </Col>
         <Col className="ListViewItem__col" span={5}>
-          <h4 className="ListViewItem__value">Amount of Influencers</h4>
+          <h4 className="ListViewItem__value" style={{textAlign: 'center'}}>{data?.ListAmount}</h4>
         </Col>
         <Col className="ListViewItem__col" span={4}>
           <h4 className="ListViewItem__value">{data?.ListNotes}</h4>

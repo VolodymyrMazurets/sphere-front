@@ -4,9 +4,8 @@ import { ListViewHeader, ListViewTable } from "../../components/views";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Logo from "../../assets/png/logo.png";
 import { RootState } from "../../store/types";
-import { Spin } from "antd";
+import { TheLoader } from "../../components/common";
 import { listActions } from "../../store/modules/list";
 
 export const ListView: React.FC = () => {
@@ -30,10 +29,7 @@ export const ListView: React.FC = () => {
 
   return (
     <div className="ListView">
-      <Spin
-        spinning={loading}
-        indicator={<img src={Logo} alt="" className="ListView__img" />}
-      >
+      <TheLoader loading={loading}>
         <ListViewHeader
           onSettigsClick={() => setIsSettingsOpen((prevState) => !prevState)}
         />
@@ -43,7 +39,7 @@ export const ListView: React.FC = () => {
           isSettingsOpen={isSettingsOpen}
           data={lists}
         />
-      </Spin>
+      </TheLoader>
     </div>
   );
 };

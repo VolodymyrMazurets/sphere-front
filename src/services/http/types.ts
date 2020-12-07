@@ -8,7 +8,8 @@ export interface AllInfluencerListsResponseType {
   ListName?: string;
   ListThumbnail?: null | string;
   ListNotes?: string;
-  LastUpdated: number;
+  LastUpdated?: number;
+  ListAmount?: string | number | null;
 }
 export interface ListDetailsResponseType {
   ListThumbnail?: null | string;
@@ -164,23 +165,23 @@ export interface ArticleResponseType {
 // Payload types
 
 export interface SearchPayloadType {
-  SearchString?: string;
+  SearchString?: string | null;
   LocationViewport?: {
-    TopLeft?: string;
-    BottomRight?: string;
+    TopLeft?: string | null;
+    BottomRight?: string | null;
   };
-  LocationName?: string;
-  MinFollowers?: number;
-  MaxFollowers?: number;
-  SortBy?: "Followers" | "Engagement";
-  SortOrder?: "ASC" | "DESC";
-  MinAvgViews?: number;
-  MinAvgComments?: number;
+  LocationName?: string | null;
+  MinFollowers?: number | null;
+  MaxFollowers?: number | null;
+  SortBy?: "Followers" | "Engagement" | null;
+  SortOrder?: "ASC" | "DESC" | null;
+  MinAvgViews?: number | null;
+  MinAvgComments?: number | null;
   Verified?: boolean | null;
   HasEmail?: boolean | null;
   Page?: number;
-  MinEngagement?: number;
-  Language?: "en" | "es";
+  MinEngagement?: number | null;
+  Language?: "en" | "es" | null;
 }
 
 export interface CreateListPayloadType {

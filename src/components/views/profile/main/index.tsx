@@ -101,9 +101,15 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
         }}
       >
         <Row className="ProfileViewMain__row" align="middle">
-          <h3 className="ProfileViewMain__instagram-name">
-            {userData?.Username}
-          </h3>
+          <a
+            href={`https://www.instagram.com/${userData?.Username}/`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <h3 className="ProfileViewMain__instagram-name">
+              {userData?.Username}
+            </h3>
+          </a>
           <Divider type="vertical" className="ProfileViewMain__divider" />
           <Row align="middle">
             <h4 className="ProfileViewMain__location-name">

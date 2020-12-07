@@ -58,10 +58,10 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
             </Tooltip>
           </li>
           <li className="TheMenu__item">
-            <Tooltip placement="right" title="Favourite Influencer">
+            <Tooltip placement="right" title="Favorites">
               <Link to="/favorite">
                 <CustomIcon icon="favorite" className="TheMenu__icon" />
-                Favourite Influencer
+                Favorites
               </Link>
             </Tooltip>
           </li>
@@ -80,42 +80,60 @@ export const TheMenu: React.FC<TheMenuProps> = ({ className, expanded }) => {
 
   const renderExpandedMenu = () => {
     return (
-      <ul className="TheMenu__expanded">
-        <li className="TheMenu__expanded-item">
-          <Tooltip placement="right" title="Search influencer">
-            <Button
-              type="link"
-              onClick={() =>
-                dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())
-              }
-              className="TheMenu__expanded-link"
-            >
-              <CustomIcon icon="search" />
-            </Button>
-          </Tooltip>
-        </li>
-        <li className="TheMenu__expanded-item">
-          <Tooltip placement="right" title="Lists">
-            <Link to="/list" className="TheMenu__expanded-link _small">
-              <CustomIcon icon="list" />
-            </Link>
-          </Tooltip>
-        </li>
-        <li className="TheMenu__expanded-item">
-          <Tooltip placement="right" title="Favorite influencer">
-            <Link to="/favorite" className="TheMenu__expanded-link _small">
-              <CustomIcon icon="favorite" />
-            </Link>
-          </Tooltip>
-        </li>
-        {/* <li className="TheMenu__expanded-item">
-          <Tooltip placement="right" title="Help">
-            <Link to="/help" className="TheMenu__expanded-link _small">
-              <CustomIcon icon="help" />
-            </Link>
-          </Tooltip>
-        </li> */}
-      </ul>
+      <>
+        <header className="TheMenu__header _expanded">
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<CustomIcon icon="arrow-left" />}
+            className="TheMenu__btn _white"
+            onClick={() => goBack()}
+          />
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<CustomIcon icon="arrow-right" />}
+            className="TheMenu__btn"
+            onClick={() => goForward()}
+          />
+        </header>
+        <ul className="TheMenu__expanded">
+          <li className="TheMenu__expanded-item">
+            <Tooltip placement="right" title="Search influencer">
+              <Button
+                type="link"
+                onClick={() =>
+                  dispatch(searchModalActions["SEARCH_MODAL_SHOW"]())
+                }
+                className="TheMenu__expanded-link"
+              >
+                <CustomIcon icon="search" />
+              </Button>
+            </Tooltip>
+          </li>
+          <li className="TheMenu__expanded-item">
+            <Tooltip placement="right" title="Lists">
+              <Link to="/list" className="TheMenu__expanded-link _small">
+                <CustomIcon icon="list" />
+              </Link>
+            </Tooltip>
+          </li>
+          <li className="TheMenu__expanded-item">
+            <Tooltip placement="right" title="Favorites">
+              <Link to="/favorite" className="TheMenu__expanded-link _small">
+                <CustomIcon icon="favorite" />
+              </Link>
+            </Tooltip>
+          </li>
+          {/* <li className="TheMenu__expanded-item">
+            <Tooltip placement="right" title="Help">
+              <Link to="/help" className="TheMenu__expanded-link _small">
+                <CustomIcon icon="help" />
+              </Link>
+            </Tooltip>
+          </li> */}
+        </ul>
+      </>
     );
   };
 

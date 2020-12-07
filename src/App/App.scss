@@ -86,7 +86,7 @@ ul {
     width: 100%;
     max-width: 300px;
     &._expanded {
-      max-width: 125px;
+      max-width: 182px;
     }
   }
   & &__modal-wrap {
@@ -108,5 +108,14 @@ ul {
   }
 }
 .ant-avatar {
-  background-color: $R2!important;
+  background-color: $R2 !important;
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.ant-spin.ant-spin-spinning {
+  min-height: calc(100vh - 200px);
 }

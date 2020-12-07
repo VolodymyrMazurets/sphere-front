@@ -14,22 +14,19 @@ import { searchModalActions } from "../../store/modules/searchModal";
 import { useHistory } from "react-router-dom";
 
 const initialSearchState: SearchPayloadType = {
-  SearchString: "",
-  LocationViewport: {
-    TopLeft: "34.257260,-118.654152",
-    BottomRight: "33.791492,-117.647507",
-  },
-  LocationName: "",
+  SearchString: null,
+  LocationViewport: undefined,
+  LocationName: null,
   MinFollowers: 1,
-  MaxFollowers: 10000000,
-  SortBy: "Followers",
-  SortOrder: "DESC",
-  MinAvgViews: 1,
-  MinAvgComments: 1,
+  MaxFollowers: null,
+  SortBy: null,
+  SortOrder: null,
+  MinAvgViews: null,
+  MinAvgComments: null,
   Verified: null,
   HasEmail: null,
   Page: 1,
-  Language: "en",
+  Language: null,
 };
 
 export const SearchModalContent: React.FC = () => {
@@ -71,7 +68,11 @@ export const SearchModalContent: React.FC = () => {
     });
   };
 
-  const onLocationChange = (viewport?: google.maps.LatLngBounds) => {
+  const onLocationChange = (
+    viewport?: google.maps.LatLngBounds,
+    address?: string
+  ) => {
+    console.log(address);
     interface ViewpotCustom {
       Sa: {
         i: number;
@@ -90,6 +91,7 @@ export const SearchModalContent: React.FC = () => {
           TopLeft: `${shallowCopy.Wa.j},${shallowCopy.Sa.i}`,
           BottomRight: `${shallowCopy.Wa.i},${shallowCopy.Sa.j}`,
         },
+        LocationName: address,
       };
     });
   };
@@ -101,8 +103,6 @@ export const SearchModalContent: React.FC = () => {
     push("/result");
     dispatch(searchModalActions["SEARCH_MODAL_HIDE"]());
   };
-
-  // const onPlacesChanged = () => console.log(searchBox?.getPlaces());
 
   return (
     <form className="SearchModalContent" onSubmit={(e) => handleButtonClick(e)}>
@@ -119,9 +119,7 @@ export const SearchModalContent: React.FC = () => {
           />
         </Col>
         <Col span={24} className="SearchModalContent__col">
-          <span className="SearchModalContent__label">
-            By Location (Using Places Autocomplete)
-          </span>
+          <span className="SearchModalContent__label">By Location</span>
           {/* <Input
             disabled
             placeholder="Ex: London or United States"
@@ -129,7 +127,10 @@ export const SearchModalContent: React.FC = () => {
           /> */}
           <TheSearch
             onChange={(e) =>
-              onLocationChange(e?.getPlaces()[0].geometry?.viewport)
+              onLocationChange(
+                e?.getPlaces()[0].geometry?.viewport,
+                e?.getPlaces()[0].formatted_address
+              )
             }
           />
         </Col>

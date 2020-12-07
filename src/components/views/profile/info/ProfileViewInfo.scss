@@ -9,13 +9,13 @@
     margin: 0;
   }
   &__text {
-    @include text($H13, 400, $N1);
+    @include text($H18, 400, $N1);
     line-height: 1.8;
   }
   &__card {
     @extend %block-styles;
     border: none;
-    padding: 30px;
+    padding: 20px 30px;
     min-width: 242px;
     &._mb {
       margin-bottom: 16px;

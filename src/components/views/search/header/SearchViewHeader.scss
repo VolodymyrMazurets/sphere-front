@@ -2,8 +2,24 @@
 .SearchViewHeader {
   padding-bottom: 38px;
   &__title {
-    @include text($H20, 600, $N1);
+    @include text($H18, 600, $N1);
     margin: 0;
+    span {
+      color: $R2;
+    }
+    &._tooltip {
+      @include flex-row(space-between, center);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+  }
+  &__results {
+    background: $N0;
+    border-radius: 50px;
+    height: 60px;
+    padding: 0 28px;
+    flex: 1;
+    margin-right: 34px;
   }
   & &__btn {
     background: $N0;
@@ -11,7 +27,6 @@
     box-shadow: none;
     @include text($H13, 500, $N1);
     text-shadow: none;
-    margin-bottom: 30px;
     height: 60px;
     padding: 0 28px;
     &:hover,
@@ -53,5 +68,11 @@
         color: #a1a5af;
       }
     }
+  }
+  &__divider {
+    color: $N1;
+    height: 20px;
+    margin: 0 24px;
+    border-left-color: $N2;
   }
 }
