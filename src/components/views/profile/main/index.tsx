@@ -166,7 +166,7 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
             <h4 className="ProfileViewMain__value">{userData?.Email}</h4>
           </Col>
           <Col span={4}>
-            <h6 className="ProfileViewMain__name">Following</h6>
+            <h6 className="ProfileViewMain__name">Followers</h6>
             <h4 className="ProfileViewMain__value">{userData?.Followers}</h4>
           </Col>
           <Col span={5}>
