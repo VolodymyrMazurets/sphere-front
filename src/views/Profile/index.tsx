@@ -13,10 +13,9 @@ import {
   ProfileViewMap,
   ProfileViewVideosChart,
 } from "../../components/views/profile";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ListDetailsInfluencersResponseType } from "../../services/http/types";
 import { RootState } from "../../store/types";
 import { TheLoader } from "../../components/common";
 import { listActions } from "../../store/modules/list";
@@ -28,10 +27,6 @@ export const ProfileView: React.FC = () => {
   const { profile, loading } = useSelector(
     ({ profileState }: RootState) => profileState
   );
-  const [
-    userData,
-    setUserData,
-  ] = useState<ListDetailsInfluencersResponseType>();
 
   const dispatch = useDispatch();
   useEffect(() => {
