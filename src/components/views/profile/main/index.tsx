@@ -34,6 +34,10 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
 
   const { lists } = useSelector(({ listState }: RootState) => listState);
 
+  const { profile } = useSelector(
+    ({ profileState }: RootState) => profileState
+  );
+
   const content = (
     <>
       <h3 className="ProfileViewMain__value" style={{ margin: "10px 0" }}>
@@ -43,7 +47,32 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
         placeholder="Choose list by name"
         style={{ width: "100%", marginBottom: 10 }}
         onChange={(e) =>
-          dispatch(listActions["LIST_ADD_INFLUENCER"](userData!, e))
+          dispatch(
+            listActions["LIST_ADD_INFLUENCER"](
+              {
+                Bio: profile.Instagram?.Profile?.Bio || null,
+                Username: profile.Instagram?.Profile?.Username || null,
+                Verified: profile.Instagram?.Profile?.Verified || null,
+                Followers: profile.Instagram?.Profile?.Followers || null,
+                FullName: profile.Instagram?.Profile?.FullName || null,
+                NumPosts: profile.Instagram?.Profile?.NumPosts || null,
+                ProfilePicture:
+                  profile.Instagram?.Metadata?.ProfilePictureURL || null,
+                Engagement:
+                  Number(
+                    profile.Instagram?.EngagementMetrics
+                      ?.AverageEngagementLikesComments
+                  ) || null,
+                EngagementNum:
+                  Number(profile.Instagram?.EngagementMetrics?.Engagement) ||
+                  null,
+                EstimatedLocation:
+                  profile.EstimatedLocation?.FormattedAddress || null,
+                InfluencerId: profile.Id,
+              },
+              e
+            )
+          )
         }
         className="TheCard__select"
       >
@@ -138,7 +167,33 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
             className="ProfileViewMain__star-btn"
             type="light"
             onClick={() =>
-              dispatch(listActions["LIST_ADD_INFLUENCER"](userData!, "0"))
+              dispatch(
+                listActions["LIST_ADD_INFLUENCER"](
+                  {
+                    Bio: profile.Instagram?.Profile?.Bio || null,
+                    Username: profile.Instagram?.Profile?.Username || null,
+                    Verified: profile.Instagram?.Profile?.Verified || null,
+                    Followers: profile.Instagram?.Profile?.Followers || null,
+                    FullName: profile.Instagram?.Profile?.FullName || null,
+                    NumPosts: profile.Instagram?.Profile?.NumPosts || null,
+                    ProfilePicture:
+                      profile.Instagram?.Metadata?.ProfilePictureURL || null,
+                    Engagement:
+                      Number(
+                        profile.Instagram?.EngagementMetrics
+                          ?.AverageEngagementLikesComments
+                      ) || null,
+                    EngagementNum:
+                      Number(
+                        profile.Instagram?.EngagementMetrics?.Engagement
+                      ) || null,
+                    EstimatedLocation:
+                      profile.EstimatedLocation?.FormattedAddress || null,
+                    InfluencerId: profile.Id,
+                  },
+                  "0"
+                )
+              )
             }
           />
 

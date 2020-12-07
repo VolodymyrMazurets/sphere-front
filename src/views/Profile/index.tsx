@@ -36,28 +36,10 @@ export const ProfileView: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(listActions["LIST_REQUEST"]());
-      dispatch(profileActions["PROFILE_REQUEST"](id));
+      await dispatch(listActions["LIST_REQUEST"]());
+      await dispatch(profileActions["PROFILE_REQUEST"](id));
     };
     fetchData();
-    setUserData({
-      Bio: profile.Instagram?.Profile?.Bio || null,
-      Username: profile.Instagram?.Profile?.Username || null,
-      Verified: profile.Instagram?.Profile?.Verified || null,
-      Followers: profile.Instagram?.Profile?.Followers || null,
-      FullName: profile.Instagram?.Profile?.FullName || null,
-      NumPosts: profile.Instagram?.Profile?.NumPosts || null,
-      ProfilePicture: profile.Instagram?.Metadata?.ProfilePictureURL || null,
-      Engagement:
-        Number(
-          profile.Instagram?.EngagementMetrics?.AverageEngagementLikesComments
-        ) || null,
-      EngagementNum:
-        Number(profile.Instagram?.EngagementMetrics?.Engagement) || null,
-      EstimatedLocation: profile.EstimatedLocation?.FormattedAddress || null,
-      InfluencerId: profile.Id,
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, id]);
 
   return (
@@ -69,7 +51,7 @@ export const ProfileView: React.FC = () => {
           </Col>
           <Col span={24} className="ProfileView__block">
             <ProfileViewMain
-              userData={userData}
+              userData={profile?.Instagram?.Profile}
               estimatedLocation={profile?.EstimatedLocation}
               engagement={
                 profile?.Instagram?.EngagementMetrics

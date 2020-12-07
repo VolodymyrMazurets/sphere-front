@@ -22,6 +22,7 @@ export const profileReducer = (
     case ActionTypes.PROFILE_REQUEST: {
       return {
         ...state,
+        profile: {},
         loading: true,
         error: false,
       };
