@@ -14,8 +14,8 @@ import { searchActions } from "../../store/modules/search";
 import { size } from "lodash";
 
 interface FilterInterface {
-  SortBy?: "Followers" | "Engagement";
-  SortOrder?: "ASC" | "DESC";
+  SortBy?: "Followers" | "Engagement" | null;
+  SortOrder?: "ASC" | "DESC" | null;
 }
 
 export const ResultView: React.FC = () => {
@@ -45,6 +45,12 @@ export const ResultView: React.FC = () => {
           SortBy: "Engagement",
           SortOrder: "ASC",
         };
+      case value === "5":
+        return {
+          SortBy: null,
+          SortOrder: null,
+        };
+
       default:
         return {
           SortBy: "Followers",

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 interface SearchViewHeaderProps {
   onChange: (e: string) => void;
+  value?: string;
 }
 
 export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
@@ -148,6 +149,7 @@ export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
             <Option value="2">Followers Low to High</Option>
             <Option value="3">Engagement High to Low</Option>
             <Option value="4">Engagement Low to High</Option>
+            <Option value="5">Sort by Relevance</Option>
           </Select>
         </div>
         <Button

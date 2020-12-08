@@ -173,7 +173,7 @@ export interface SearchPayloadType {
   LocationName?: string | null;
   MinFollowers?: number | null;
   MaxFollowers?: number | null;
-  SortBy?: "Followers" | "Engagement" | null;
+  SortBy?: "Followers" | "Engagement" | "Relevance" | null;
   SortOrder?: "ASC" | "DESC" | null;
   MinAvgViews?: number | null;
   MinAvgComments?: number | null;
