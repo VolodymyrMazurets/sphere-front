@@ -12,6 +12,8 @@ import store from "../store";
 const library: Libraries = ["places"];
 
 export const App: React.FC = () => {
+
+  
   return (
     <div className="App">
       <Provider store={store}>

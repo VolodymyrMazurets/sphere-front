@@ -11,22 +11,26 @@
     margin-bottom: 20px;
   }
   &__title {
-    @include text($H15, 500, $N1);
+    @include text($H18, 500, $N1);
     margin-bottom: 4px;
+    word-wrap: break-word;
   }
   &__location {
-    @include text($H13, 400, $N2);
+    @include text($H15, 400, $N2);
     margin-bottom: 30px;
     display: inline-block;
+    word-wrap: break-word;
   }
   &__name {
-    @include text($H13, 500, $N1);
+    @include text($H15, 500, $N1);
     margin-bottom: 12px;
+    word-wrap: break-word;
   }
   &__text {
     @include text($H15, 400, $N2);
     line-height: 1.9;
     margin-bottom: 40px;
+    word-wrap: break-word;
   }
   &__value {
     @include text($H24, 500, $N1);

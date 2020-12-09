@@ -1,26 +1,19 @@
 import "./HomeAsside.scss";
 
 import { Col, Row } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "antd/lib/avatar/avatar";
+import React from "react";
 import { RootState } from "../../../../store/types";
 import { UserOutlined } from "@ant-design/icons";
 import { format } from "date-fns";
 import { map } from "lodash";
-import { topicsActions } from "../../../../store/modules/topics";
+import { useSelector } from "react-redux";
 
 export const HomeAsside: React.FC = () => {
-  const dispatch = useDispatch();
   const { topics } = useSelector(({ topicsState }: RootState) => topicsState);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch(topicsActions["TOPICS_REQUEST"]("influencers marketing"));
-    };
-    fetchData();
-  }, [dispatch]);
+ 
 
   return (
     <div className="HomeAsside">

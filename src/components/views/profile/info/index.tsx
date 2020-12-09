@@ -24,7 +24,7 @@ export const ProfileViewInfo: React.FC<ProfileViewInfoProps> = ({
   return (
     <Row className={classNames("ProfileViewInfo", className)} gutter={15}>
       <Col flex={1}>
-        <div className="ProfileViewInfo__card" style={{ height: "100%" }}>
+        <div className="ProfileViewInfo__card" style={{ minHeight: "50%" }}>
           <span className="ProfileViewInfo__small-title">User Bio</span>
           <p className="ProfileViewInfo__text">{bio}</p>
         </div>

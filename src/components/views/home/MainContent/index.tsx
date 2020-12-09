@@ -23,7 +23,7 @@ const quotesBlock = () => {
   const randomText = notes[random(0, notes.length - 1)];
   return (
     <div className="HomeMainContent__quotes-block">
-      <div className="HomeMainContent__label">Quotes of the day</div>
+      <div className="HomeMainContent__label">Motivational quote</div>
       <p className="HomeMainContent__quote">{randomText.text}</p>
       <span className="HomeMainContent__author"> {randomText.author}</span>
     </div>

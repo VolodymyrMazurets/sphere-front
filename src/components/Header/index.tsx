@@ -7,6 +7,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import { ClassValue } from "classnames/types";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/png/logo.png";
+import User from "../../assets/jpg/11.jpg";
 import { UserOutlined } from "@ant-design/icons";
 import classNames from "classnames";
 
@@ -32,11 +33,7 @@ export const TheHeader: React.FC<TheHeaderProps> = ({ className }) => {
             <h4 className="TheHeader__user-name">Hi, {user}</h4>
           </Col>
           <Col>
-            <Avatar
-              size={40}
-              icon={<UserOutlined />}
-              src="http://www.sphereinfluencer.com/assets/images/portraits/square/11.jpg"
-            />
+            <Avatar size={40} icon={<UserOutlined />} src={User} />
           </Col>
         </Row>
       </Col>

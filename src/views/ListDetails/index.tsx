@@ -40,8 +40,8 @@ export const ListDetailsView: React.FC = () => {
             {listDetails.ListName}
           </h4>
           <CustomIcon
-            style={{ fontSize: 70, height: 20 }}
-            icon="long-arrow"
+            style={{ fontSize: 18}}
+            icon="separator"
             className="ListDetailsView__head-arrow"
           />
           <h4
@@ -51,8 +51,8 @@ export const ListDetailsView: React.FC = () => {
             {listDetails.ListNotes}
           </h4>
           <CustomIcon
-            style={{ fontSize: 70, height: 20 }}
-            icon="long-arrow"
+            style={{ fontSize: 18}}
+            icon="separator"
             className="ListDetailsView__head-arrow"
           />
           <h4

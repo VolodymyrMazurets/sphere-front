@@ -141,6 +141,9 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Following*
               </span>
               <InputNumber
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
                 onChange={(e) => onInputTypeNumberChange(e, "MinFollowers")}
                 placeholder="Ex 5,000"
                 className="SearchModalContent__input"
@@ -151,6 +154,9 @@ export const SearchModalContent: React.FC = () => {
                 Maximum Following*
               </span>
               <InputNumber
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
                 onChange={(e) => onInputTypeNumberChange(e, "MaxFollowers")}
                 placeholder="Ex 5,000,000"
                 className="SearchModalContent__input"
@@ -161,6 +167,9 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Engagement%
               </span>
               <InputNumber
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
                 onChange={(e) => onInputTypeNumberChange(e, "MinEngagement")}
                 placeholder="Ex 1.5%"
                 className="SearchModalContent__input"
@@ -175,6 +184,9 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Avg. Views
               </span>
               <InputNumber
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
                 onChange={(e) => onInputTypeNumberChange(e, "MinAvgViews")}
                 placeholder="Ex 10,000"
                 className="SearchModalContent__input"
@@ -185,6 +197,9 @@ export const SearchModalContent: React.FC = () => {
                 Minimum Avg. Comments
               </span>
               <InputNumber
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
                 onChange={(e) => onInputTypeNumberChange(e, "MinAvgComments")}
                 placeholder="Ex 10"
                 className="SearchModalContent__input"

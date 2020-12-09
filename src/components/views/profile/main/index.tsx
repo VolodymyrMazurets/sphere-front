@@ -6,14 +6,16 @@ import {
   EstimatedLocationType,
   ListDetailsInfluencersResponseType,
 } from "../../../../services/http/types";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "antd/lib/avatar/avatar";
 import { CustomIcon } from "../../../CustomIcon";
 import Map from "../../../../assets/jpg/locationBtn.jpg";
-import React from "react";
+import NumericLabel from "react-pretty-numbers";
 import { RootState } from "../../../../store/types";
 import { TheButton } from "../../../common/buttons";
+import classNames from "classnames";
 import { listActions } from "../../../../store/modules/list";
 import { map } from "lodash";
 
@@ -25,12 +27,21 @@ interface ProfileViewMainProps {
   engagement?: string;
 }
 
+const option = {
+  justification: "L",
+  shortFormat: true,
+  shortFormatMinValue: 1000,
+  shortFormatPrecision: 1,
+  title: true,
+};
+
 export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
   userData,
   estimatedLocation,
   engagement,
 }) => {
   const dispatch = useDispatch();
+  const [active, setActive] = useState(false);
 
   const { lists } = useSelector(({ listState }: RootState) => listState);
 
@@ -164,9 +175,12 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
             shape="circle"
             icon="star"
             iconSize={20}
-            className="ProfileViewMain__star-btn"
+            className={classNames("ProfileViewMain__star-btn", {
+              _active: active,
+            })}
             type="light"
-            onClick={() =>
+            onClick={() => {
+              setActive(true);
               dispatch(
                 listActions["LIST_ADD_INFLUENCER"](
                   {
@@ -193,8 +207,8 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
                   },
                   "0"
                 )
-              )
-            }
+              );
+            }}
           />
 
           <Popover
@@ -222,7 +236,9 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
           </Col>
           <Col span={4}>
             <h6 className="ProfileViewMain__name">Followers</h6>
-            <h4 className="ProfileViewMain__value">{userData?.Followers}</h4>
+            <h4 className="ProfileViewMain__value">
+              <NumericLabel params={option}>{userData?.Followers}</NumericLabel>
+            </h4>
           </Col>
           <Col span={5}>
             <h6 className="ProfileViewMain__name">Engagement %</h6>

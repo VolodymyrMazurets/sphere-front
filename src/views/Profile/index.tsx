@@ -41,9 +41,9 @@ export const ProfileView: React.FC = () => {
     <div className="ProfileView">
       <TheLoader loading={loading}>
         <Row>
-          <Col span={24} className="ProfileView__head">
+          {/* <Col span={24} className="ProfileView__head">
             <h1 className="ProfileView__title">Mona’s Brain</h1>
-          </Col>
+          </Col> */}
           <Col span={24} className="ProfileView__block">
             <ProfileViewMain
               userData={profile?.Instagram?.Profile}

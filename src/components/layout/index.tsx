@@ -1,13 +1,14 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Modal } from "antd";
-import React from "react";
 import { RootState } from "../../store/types";
 import { SearchModalContent } from "../SearchModalContent";
 import { TheHeader } from "../Header";
 import { TheMenu } from "../Menu";
 import classNames from "classnames";
 import { searchModalActions } from "../../store/modules/searchModal";
+import { topicsActions } from "../../store/modules/topics";
 import { useLocation } from "react-router-dom";
 
 export const MainLayout: React.FC = ({ children }) => {
@@ -16,6 +17,13 @@ export const MainLayout: React.FC = ({ children }) => {
     ({ searchModalState }: RootState) => searchModalState
   );
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch(topicsActions["TOPICS_REQUEST"]("influencers marketing"));
+    };
+    fetchData();
+  }, [dispatch]);
 
   const isNotExpandedView = () => pathname === "/" || pathname === "/list";
 

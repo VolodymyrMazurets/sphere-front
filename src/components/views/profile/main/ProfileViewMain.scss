@@ -55,6 +55,18 @@
   }
   &__star-btn {
     margin-right: 20px;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $R3 !important;
+      color: $R2;
+      border-color: $R3;
+    }
+    &._active {
+      background-color: $R3 !important;
+      color: $R2;
+      border-color: $R3;
+    }
   }
   &__name {
     @include text($H13, 400, $N2);

@@ -6,6 +6,7 @@ import { TheCard, TheLoader } from "../../components/common";
 import { map, minBy } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 
+import { CustomIcon } from "../../components";
 import { RootState } from "../../store/types";
 import { listDetailsActions } from "../../store/modules/listDetails";
 
@@ -30,11 +31,19 @@ export const FavoriteView: React.FC = () => {
           <h4 style={{ paddingRight: 10 }} className="FavoriteView__head-value">
             {listDetails.ListName}
           </h4>
-          <Divider type="vertical" className="FavoriteView__head-arrow" />
+          <CustomIcon
+            style={{ fontSize: 18, color: "#6e7b95" }}
+            icon="separator"
+            className="FavoriteView__head-arrow"
+          />
           <h4 style={{ paddingRight: 10 }} className="FavoriteView__head-value">
             {listDetails.ListNotes}
           </h4>
-          <Divider type="vertical" className="FavoriteView__head-arrow" />
+          <CustomIcon
+            style={{ fontSize: 18, color: "#6e7b95" }}
+            icon="separator"
+            className="FavoriteView__head-arrow"
+          />
           <h4 style={{ paddingLeft: 10 }} className="FavoriteView__head-value">
             {listDetails.Influencers?.length
               ? `${
