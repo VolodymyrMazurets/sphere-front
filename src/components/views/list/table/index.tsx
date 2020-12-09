@@ -1,14 +1,16 @@
 import "./ListViewTable.scss";
 
-import { Col, Divider, Row } from "antd";
+import { Col, Divider, Dropdown, Menu, Row, Typography } from "antd";
+import React, { useEffect, useState } from "react";
+import { map, orderBy } from "lodash";
 
 import { ClassValue } from "classnames/types";
+import { DownOutlined } from "@ant-design/icons";
 import { ListType } from "../../../../types/entities";
 import { ListViewItem } from "../item";
-import React from "react";
 import classNames from "classnames";
-import { map } from "lodash";
 
+const { Link } = Typography;
 interface ListViewTableProps {
   className?: ClassValue;
   data?: ListType[];
@@ -24,6 +26,46 @@ export const ListViewTable: React.FC<ListViewTableProps> = ({
   deleteClicked,
   editClicked,
 }) => {
+  const [filtered, setFilterd] = useState<ListType[] | undefined>([]);
+  const [filterNumber, setFilterNumber] = useState<number | undefined>();
+  useEffect(() => {
+    switch (filterNumber) {
+      case 1:
+        setFilterd(orderBy(data, ["ListAmount"], ["desc"]));
+        break;
+      case 2:
+        setFilterd(orderBy(data, ["LastUpdated"], ["desc"]));
+        break;
+      case 3:
+        setFilterd(orderBy(data, ["ListName"], ["asc"]));
+        break;
+
+      default:
+        setFilterd(data);
+        break;
+    }
+  }, [data, filterNumber]);
+
+  const menu = (
+    <Menu>
+      <Menu.Item key={1}>
+        <Link onClick={() => setFilterNumber(1)} style={{ color: "#131f38" }}>
+          Amount of influencers
+        </Link>
+      </Menu.Item>
+      <Menu.Item key={2}>
+        <Link onClick={() => setFilterNumber(2)} style={{ color: "#131f38" }}>
+          Last update
+        </Link>
+      </Menu.Item>
+      <Menu.Item key={3}>
+        <Link onClick={() => setFilterNumber(3)} style={{ color: "#131f38" }}>
+          Alphabetical
+        </Link>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className={classNames("ListViewTable", className)}>
       <Row className="ListViewTable__head" gutter={20}>
@@ -40,11 +82,19 @@ export const ListViewTable: React.FC<ListViewTableProps> = ({
           <h4 className="ListViewTable__head-name">Notes</h4>
         </Col>
         <Col span={5}>
-          <h4 className="ListViewTable__head-name">Sort By</h4>
+          <Dropdown overlay={menu} placement="bottomLeft" arrow trigger={['click']}>
+            <a
+              href=" "
+              className="ListViewTable__head-name"
+              onClick={(e) => e.preventDefault()}
+            >
+              Sort By <DownOutlined style={{marginLeft: 10}} />
+            </a>
+          </Dropdown>
         </Col>
       </Row>
       <Divider className="ListViewTable__divider" />
-      {map(data, (item) => (
+      {map(filtered, (item) => (
         <ListViewItem
           deleteClicked={(e) => deleteClicked(e)}
           editClicked={(e) => editClicked(e)}
