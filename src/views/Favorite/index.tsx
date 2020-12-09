@@ -1,6 +1,6 @@
 import "./FavoriteView.scss";
 
-import { Col, Divider, Row } from "antd";
+import { Col, Row } from "antd";
 import React, { useEffect } from "react";
 import { TheCard, TheLoader } from "../../components/common";
 import { map, minBy } from "lodash";
