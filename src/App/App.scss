@@ -78,6 +78,7 @@ ul {
     @include flex(stretch, stretch);
     flex: 1;
     padding-right: 55px;
+    height: calc(100vh - 82px);
     &._more-padding {
       padding-right: 55px;
     }

@@ -232,7 +232,14 @@ export const ProfileViewMain: React.FC<ProfileViewMainProps> = ({
           </Col> */}
           <Col flex={1}>
             <h6 className="ProfileViewMain__name">Influencer Email</h6>
-            <h4 className="ProfileViewMain__value">{userData?.Email}</h4>
+            <h4 className="ProfileViewMain__value">
+              <a
+                style={{ color: "inherit" }}
+                href={`mailto:${userData?.Email}`}
+              >
+                {userData?.Email}
+              </a>
+            </h4>
           </Col>
           <Col span={4}>
             <h6 className="ProfileViewMain__name">Followers</h6>

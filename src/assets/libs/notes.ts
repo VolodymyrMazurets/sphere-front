@@ -9,7 +9,7 @@ export const notes = [
     author: "Enzo Ferrari",
   },
   {
-    text: "The client is not always right ",
+    text: "The client is not always right.",
     author: "Enzo Ferrari",
   },
   {
@@ -26,7 +26,7 @@ export const notes = [
   },
   {
     text:
-      "Focus is more valuable than intelligence. Concentration is richer than money",
+      "Focus is more valuable than intelligence. Concentration is richer than money.",
     author: "Unknown",
   },
   {
@@ -61,11 +61,11 @@ export const notes = [
     author: "Enzo Ferrari",
   },
   {
-    text: "Change is easy. Improvement is far more difficult. ",
+    text: "Change is easy. Improvement is far more difficult.",
     author: "Ferdinand Porsche",
   },
   {
-    text: "When the why gets stronger, the how gets easier ",
+    text: "When the why gets stronger, the how gets easier.",
     author: "Unknown",
   },
   {
@@ -73,7 +73,7 @@ export const notes = [
     author: "Carl Jung",
   },
   {
-    text: "I will either find a way or make a way",
+    text: "I will either find a way or make a way.",
     author: "Hannibal",
   },
   {
@@ -81,7 +81,7 @@ export const notes = [
     author: "Nassim Taleb",
   },
   {
-    text: "The only way out of suffering is through it",
+    text: "The only way out of suffering is through it.",
     author: "Robert frost",
   },
   {
@@ -91,7 +91,7 @@ export const notes = [
   },
   {
     text:
-      "If you want to go quickly, go alone. If you want to go far, go together",
+      "If you want to go quickly, go alone. If you want to go far, go together.",
     author: "African proverb",
   },
   {
@@ -99,16 +99,16 @@ export const notes = [
     author: "Ferdinand Porsche",
   },
   {
-    text: "Motion is tranquility",
+    text: "Motion is tranquility.",
     author: "Stirling Moss",
   },
   {
     text:
-      "Design must be functional and functionality must be translated into visual aesthetics, without any reliance on gimmicks that have to be explained",
+      "Design must be functional and functionality must be translated into visual aesthetics, without any reliance on gimmicks that have to be explained.",
     author: "Ferdinand Porsche",
   },
   {
-    text: "The Unexamined life is not worth leaving",
+    text: "The Unexamined life is not worth leaving.",
     author: "Socrates",
   },
   {
@@ -117,11 +117,11 @@ export const notes = [
     author: "Jack Dorsey",
   },
   {
-    text: "The price of anything is the amount of life you exchange for it",
+    text: "The price of anything is the amount of life you exchange for it.",
     author: "Thoreau",
   },
   {
-    text: "Stop complaining, no one is listening ",
+    text: "Stop complaining, no one is listening.",
     author: "",
   },
   {
@@ -129,11 +129,11 @@ export const notes = [
     author: "Ettore Buggatti",
   },
   {
-    text: "The time is always right to do what is right ",
+    text: "The time is always right to do what is right.",
     author: "MLK",
   },
   {
-    text: "Lying to police is never wrong ",
+    text: "Lying to police is never wrong.",
     author: "Banksy",
   },
   {
@@ -152,12 +152,12 @@ export const notes = [
     author: "Josh James",
   },
   {
-    text: "Dream big dreams. Small dreams have no magic",
+    text: "Dream big dreams. Small dreams have no magic.",
     author: "Unknown",
   },
   {
     text:
-      "I was taught that everything is attainable if you are prepared to give up, to sacrifice, to get it. Whatever you want to do, you can do it, if you want it badly enough",
+      "I was taught that everything is attainable if you are prepared to give up, to sacrifice, to get it. Whatever you want to do, you can do it, if you want it badly enough.",
     author: "Stirling Moss",
   },
   {
@@ -167,7 +167,7 @@ export const notes = [
   },
   {
     text:
-      "Failure is simply the opportunity to begin again, this time more intelligently",
+      "Failure is simply the opportunity to begin again, this time more intelligently.",
     author: "Henry Food",
   },
   {
@@ -180,13 +180,13 @@ export const notes = [
     author: "Henry Ford",
   },
   {
-    text: "Impossible means that you haven't found a solution yet",
+    text: "Impossible means that you haven't found a solution yet.",
     author: "Henry Ford",
   },
   {
     text:
-      "The two most important things in any company do not appear in its balance sheet: its reputation and its people",
-    author: "Henry Ford ",
+      "The two most important things in any company do not appear in its balance sheet: its reputation and its people.",
+    author: "Henry Ford",
   },
   {
     text: "Don't find fault, find a remedy.",
@@ -259,13 +259,13 @@ export const notes = [
     author: "Steve Jobs",
   },
   {
-    text: "We are our choices. Build yourself a great story. ",
+    text: "We are our choices. Build yourself a great story.",
     author: "Jeff Bezos",
   },
   {
     text:
       "It’s hard to do a really good job on anything you don’t think about in the shower.",
-    author: "Paul Graham ",
+    author: "Paul Graham",
   },
   {
     text:
@@ -318,7 +318,7 @@ export const notes = [
   },
   {
     text:
-      "Fearlessness is not the absence of fear. It’s the mastery of fear. It’s about getting up one more time than we fall down. ",
+      "Fearlessness is not the absence of fear. It’s the mastery of fear. It’s about getting up one more time than we fall down.",
     author: "Arianna Huffingto",
   },
   {
@@ -341,7 +341,7 @@ export const notes = [
   },
   {
     text:
-      "Define success in your own terms, achieve it by your own rules, and build a life you’re proud to live. — Anne Sweeney“The question isn’t who is going to let me; it’s who is going to stop me?",
+      "Define success in your own terms, achieve it by your own rules, and build a life you’re proud to live. — Anne Sweeney“The question isn’t who is going to let me; it’s who is going to stop me?.",
     author: "Ayn Rand",
   },
   {
@@ -418,7 +418,7 @@ export const notes = [
   {
     text:
       "You just have to pay attention to what people need and what has not been done.",
-    author: "Russel Simmons ",
+    author: "Russel Simmons",
   },
   {
     text: "Diligence is the mother of good luck.",

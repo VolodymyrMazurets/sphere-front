@@ -3,11 +3,11 @@
   position: relative;
   z-index: 1;
   padding: 30px 20px;
-  height: calc(100vh - 82px);
+  // height: calc(100vh - 82px);
+  overflow: auto;
   &__main-content {
     flex: 1;
     overflow: auto;
-    height: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
