@@ -72,9 +72,10 @@ export const SearchModalContent: React.FC = () => {
     viewport?: google.maps.LatLngBounds,
     address?: string
   ) => {
-    console.log(address);
+    // console.log(viewport);
+    // console.log(address);
     interface ViewpotCustom {
-      Sa: {
+      Ra: {
         i: number;
         j: number;
       };
@@ -88,8 +89,8 @@ export const SearchModalContent: React.FC = () => {
       return {
         ...prevState,
         LocationViewport: {
-          TopLeft: `${shallowCopy.Wa.j},${shallowCopy.Sa.i}`,
-          BottomRight: `${shallowCopy.Wa.i},${shallowCopy.Sa.j}`,
+          TopLeft: `${shallowCopy.Wa.j},${shallowCopy.Ra.i}`,
+          BottomRight: `${shallowCopy.Wa.i},${shallowCopy.Ra.j}`,
         },
         LocationName: address,
       };
