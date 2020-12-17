@@ -43,6 +43,7 @@ export enum ActionTypes {
   SEARCH_SUCCESS = "SEARCH_SUCCESS",
   SEARCH_FAILURE = "SEARCH_FAILURE",
   SEARCH_UPDATE = "SEARCH_UPDATE",
+  SEARCH_UPDATE_DRAG = "SEARCH_UPDATE_DRAG",
   SEARCH_CLEAR = "SEARCH_CLEAR",
   // Profile Store
   PROFILE_REQUEST = "PROFILE_REQUEST",
@@ -76,6 +77,9 @@ export type ListDetailsActionTypes =
 export type SearchActionTypes =
   | (Action<ActionTypes.SEARCH_UPDATE> & {
       payload: { result: SearchType[]; body: SearchPayloadType };
+    })
+  | (Action<ActionTypes.SEARCH_UPDATE_DRAG> & {
+      payload: SearchType[];
     })
   | Action<ActionTypes.SEARCH_SUCCESS>
   | Action<ActionTypes.SEARCH_FAILURE>

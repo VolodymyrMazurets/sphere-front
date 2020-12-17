@@ -1,28 +1,51 @@
 import "./SearchViewHeader.scss";
 
-import { Button, Col, Divider, Popover, Row, Select } from "antd";
+import { AppstoreOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import { Button, Col, Divider, Popover, Row, Select, Switch } from "antd";
 import React, { useState } from "react";
 
 import { CustomIcon } from "../../../CustomIcon";
 import { RootState } from "../../../../store/types";
+import { httpService } from "../../../../services";
 import { useSelector } from "react-redux";
 
 interface SearchViewHeaderProps {
   onChange: (e: string) => void;
   value?: string;
+  onViewChange?: (e: boolean) => void;
+  checked?: boolean;
 }
 
 export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
   onChange,
+  onViewChange,
+  checked,
 }) => {
   const { Option } = Select;
   const [filter] = useState<string | undefined>(undefined);
   const { searchPayload } = useSelector(
     ({ searchState }: RootState) => searchState
   );
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: string) => {
     onChange(e);
+  };
+
+  const onCsvClick = async () => {
+    setLoading(true);
+    const data = await httpService.generateCsv({
+      ...searchPayload,
+      Page: "MAX",
+    });
+    setLoading(false);
+    const blob = new Blob([data!], {
+      type: 'text/plain'
+  });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "influencers.csv";
+    link.click();
   };
 
   const content = (
@@ -137,6 +160,15 @@ export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
       </Popover>
 
       <Row>
+        <Col className="SearchViewHeader__select">
+          <label className="SearchViewHeader__select-label">Result view</label>
+          <Switch
+            checkedChildren={<AppstoreOutlined />}
+            unCheckedChildren={<UnorderedListOutlined />}
+            onChange={(e) => onViewChange && onViewChange(e)}
+            checked={checked}
+          />
+        </Col>
         <div className="SearchViewHeader__select">
           <label className="SearchViewHeader__select-label">Sort by</label>
           <Select
@@ -157,6 +189,8 @@ export const SearchViewHeader: React.FC<SearchViewHeaderProps> = ({
           type="primary"
           shape="round"
           size="large"
+          onClick={onCsvClick}
+          loading={loading}
         >
           Export as CSV
           <CustomIcon

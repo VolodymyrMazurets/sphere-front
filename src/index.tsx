@@ -1,5 +1,5 @@
 import "./index.scss";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.less';
 
 import { App } from "./App/App";
 import React from "react";

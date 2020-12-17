@@ -179,7 +179,7 @@ export interface SearchPayloadType {
   MinAvgComments?: number | null;
   Verified?: boolean | null;
   HasEmail?: boolean | null;
-  Page?: number;
+  Page?: number | string;
   MinEngagement?: number | null;
   Language?: "en" | "es" | null;
 }

@@ -18,6 +18,7 @@ export const TEST_USER_ID: string = "a4f5708f-ac6d-497d-b647-a4f9315490db";
 export const TOPICS_API_KEY: string = "164c387dbc1c4a349ef3467a08956d87";
 
 export const urls = {
+  generate: `${BASE_URL}/generatecsv/`,
   list: (userID: string) => `${BASE_URL}/influencerlist/${userID}/`,
   listDetails: (userID: string, listID: string) =>
     `${BASE_URL}/influencerlist/${userID}/${listID}/`,
@@ -143,6 +144,14 @@ class HttpService {
         "x-rapidapi-key": "4061fb68b1mshda89bca3c51dc87p1eae66jsn7ad5c7a020a6",
         "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
       }
+    );
+  };
+  generateCsv = (body: SearchPayloadType) => {
+    return this.fetchData<string>(
+      urls.generate,
+      "post",
+      null,
+      body
     );
   };
 }

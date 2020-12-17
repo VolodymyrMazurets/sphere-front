@@ -1,0 +1,38 @@
+@import "../../../scss/core.scss";
+.ResultListItem {
+  padding: 4px 10px;
+  &__item {
+    background: linear-gradient(
+      13.83deg,
+      #ffffff 23.03%,
+      rgba(255, 255, 255, 0.25) 104.48%
+    );
+    border-radius: 20px;
+    padding: 10px 24px;
+    &.isChecked {
+      background: linear-gradient(
+        13.83deg,
+        $R2 23.03%,
+        rgba(255, 255, 255, 0.25) 104.48%
+      );
+    }
+  }
+  &__star-btn {
+    margin-right: 10px;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $R3 !important;
+      color: $R2;
+      border-color: $R3;
+    }
+    &._active {
+      background-color: $R2 !important;
+      color: $N0;
+      border-color: $R3;
+    }
+  }
+  &__add-btn {
+    margin-right: 10px;
+  }
+}

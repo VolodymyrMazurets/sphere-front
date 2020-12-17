@@ -1,15 +1,14 @@
 import { ActionTypes, AppThunk, SearchActionTypes } from "../types";
-import {
-  ListDetailsInfluencersResponseType,
-  SearchPayloadType,
-} from "../../services/http/types";
 
+import { SearchPayloadType } from "../../services/http/types";
+import { SearchType } from "../../types/entities";
 import { httpService } from "../../services";
+import { map } from "lodash";
 
 export interface SearchState {
   loading: boolean;
   error: boolean;
-  searchResult: ListDetailsInfluencersResponseType[];
+  searchResult: SearchType[];
   searchPayload: SearchPayloadType;
 }
 
@@ -57,6 +56,12 @@ export const searchReducer = (
         searchResult: [...state.searchResult, ...action.payload.result],
       };
     }
+    case ActionTypes.SEARCH_UPDATE_DRAG: {
+      return {
+        ...state,
+        searchResult: [...action.payload],
+      };
+    }
     default:
       return state;
   }
@@ -69,10 +74,14 @@ export const searchActions = {
     dispatch({ type: ActionTypes.SEARCH_REQUEST });
     const response = await httpService.searchInfluencers(body);
     if (response) {
+      const mapedResult = map(response, (item) => ({
+        ...item,
+        id: Number(item.InfluencerId),
+      }));
       dispatch({ type: ActionTypes.SEARCH_SUCCESS });
       dispatch({
         type: ActionTypes.SEARCH_UPDATE,
-        payload: { result: response, body: body },
+        payload: { result: mapedResult, body: body },
       });
     } else {
       dispatch({ type: ActionTypes.SEARCH_FAILURE });

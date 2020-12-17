@@ -16,7 +16,7 @@
     box-shadow: none;
     @include text($H13, 500, $N1);
     text-shadow: none;
-    margin-bottom: 30px;
+    margin-top: 30px;
     height: 60px;
     padding: 0 28px;
     &:hover,
@@ -34,5 +34,13 @@
     color: $R2;
     text-align: center;
     margin-top: 80px;
+  }
+  &__add-btn {
+    position: fixed;
+    right: 65px;
+    bottom: 20px;
+  }
+  &__list-head {
+    padding: 4px 40px;
   }
 }
