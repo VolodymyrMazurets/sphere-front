@@ -72,7 +72,6 @@ export const SearchModalContent: React.FC = () => {
     viewport?: google.maps.LatLngBounds,
     address?: string
   ) => {
-
     interface ViewpotCustom {
       Ra: {
         i: number;
