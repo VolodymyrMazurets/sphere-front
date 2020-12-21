@@ -6,4 +6,5 @@ export enum RouteTypes {
   profile = '/profile/:id',
   favorite = '/favorite',
   help = '/help',
+  search = '/search',
 }

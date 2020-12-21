@@ -6,6 +6,7 @@ import {
   ListView,
   ProfileView,
   ResultView,
+  SearchView,
 } from "../views";
 import { Route, Switch, withRouter } from "react-router-dom";
 
@@ -22,6 +23,7 @@ export const RouterView = withRouter(({ location }) => {
       <Route path={RouteTypes.profile} component={ProfileView} />
       <Route path={RouteTypes.favorite} component={FavoriteView} />
       <Route path={RouteTypes.help} component={HelpView} />
+      <Route path={RouteTypes.search} component={SearchView} />
     </Switch>
   );
 });
