@@ -98,7 +98,7 @@ export const ResultListItem: React.FC<ResultListItemProps> = ({
         gutter={20}
       >
         <Col span={7}>
-          <Row gutter={20}>
+          <Row gutter={20} style={{flexWrap: 'nowrap'}}> 
             <Col>
               {data?.Verified ? (
                 <Badge
@@ -201,8 +201,8 @@ export const ResultListItem: React.FC<ResultListItemProps> = ({
             <TheButton
               shape="circle"
               icon="star"
-              iconSize={20}
-              className={classNames("ResultListItem__star-btn", {
+              iconSize={14}
+              className={classNames("ResultListItem__star-btn ResultListItem__small-btn", {
                 _active: active,
               })}
               type="light"
@@ -227,16 +227,17 @@ export const ResultListItem: React.FC<ResultListItemProps> = ({
               <TheButton
                 shape="circle"
                 icon="add"
-                iconSize={18}
-                className="ResultListItem__add-btn"
+                iconSize={14}
+                className="ResultListItem__add-btn ResultListItem__small-btn"
               />
             </Popover>
             <TheButton
               icon="delete"
               type="danger"
               shape="circle"
-              iconSize={20}
+              iconSize={14}
               onClick={deleteItem}
+              className="ResultListItem__delete-btn ResultListItem__small-btn"
             />
           </Row>
         </Col>
