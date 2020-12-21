@@ -182,6 +182,7 @@ export interface SearchPayloadType {
   Page?: number | string;
   MinEngagement?: number | null;
   Language?: "en" | "es" | null;
+  GridView?: boolean;
 }
 
 export interface CreateListPayloadType {

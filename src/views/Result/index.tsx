@@ -8,7 +8,7 @@ import {
   DropResult,
   Droppable,
 } from "react-beautiful-dnd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ResultListItem, TheButton, TheCard } from "../../components/common";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -134,6 +134,16 @@ export const ResultView: React.FC = () => {
     };
     fetchData();
   }, [dispatch]);
+
+  useMemo(async () => {
+    if (!cardView) {
+      dispatch(searchActions["SEARCH_CLEAR"]());
+      await dispatch(
+        searchActions["SEARCH_REQUEST"]({ ...searchPayload, GridView: true })
+      );
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardView]);
 
   const content = (
     <>

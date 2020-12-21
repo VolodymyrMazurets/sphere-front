@@ -93,7 +93,7 @@ export const ResultListItem: React.FC<ResultListItemProps> = ({
     <div className={classNames("ResultListItem", className)}>
       <Row
         className={classNames("ResultListItem__item", { isChecked: isChecked })}
-        style={{ height: 100 }}
+        style={{ height: 80 }}
         align="middle"
         gutter={20}
       >
